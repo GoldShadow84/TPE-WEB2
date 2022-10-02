@@ -4,29 +4,34 @@
 
     <h1>Añadir/Actualizar</h1>
 
-    <form action="add" method="POST">
+    <form action="addSerie" method="POST">
 
-    <h2>Ingrese pagos</h2>
+    <h2>Ingrese los datos</h2>
+
 
     <div class="col-3">
         <div>
-            <label>deudor</label>
+            <label>Nombre de la Serie</label>
 
-            <input name="deudor" type="text"></input>
+            <input name="name" type="text" placeholder="Nombre de la Serie"></input>
 
-          <!--  <label>cuota</label>
+            <label>Genero de la Serie</label>
+            <input name="genre" type="text" placeholder="Genero de la Serie"></input>
 
-            <input name="cuota" type="number"></input>
+              <label>Plataforma a la que Pertenece</label>
+                <select name="choice" class="form-selected">
+                            <option selected>Selecciona una Plataforma</option>
+                
+                                            
+                                {foreach $platforms as $platform }
+                                <option value="{$platform->company}">{$platform->company}</option>
+                                {/foreach}  
 
-            <label>cuota_capital</label>
+                        </select>
 
-            <input name="cuota_capital" type="number"></input>
+            <label>Archivo Imagen-Serie</label>
+            <input name="image" type="file" placeholder="Archivo Imagen-Serie"></input>
 
-            <label>fecha_pago</label>
-
-            <input name="fecha_pago"></input>
-
-            -->
 
         </div>
     </div>

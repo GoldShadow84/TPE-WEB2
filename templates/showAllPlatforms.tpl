@@ -24,9 +24,12 @@
       </ul>
 
       
-
+      {include 'templates\form_platform.tpl'}
     </div>  
-    
+
+
+      
+
 
       {include 'templates\footer.tpl'}
 

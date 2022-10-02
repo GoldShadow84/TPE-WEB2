@@ -4,29 +4,19 @@
 
     <h1>Añadir/Actualizar</h1>
 
-    <form action="add" method="POST">
+    <form action="addPlatform" method="POST">
 
-    <h2>Ingrese pagos</h2>
+    <h2>Ingrese los datos</h2>
 
     <div class="col-3">
         <div>
-            <label>deudor</label>
+            <label>Nombre de la Plataforma</label>
 
-            <input name="deudor" type="text"></input>
+            <input name="company" type="text" placeholder="Nombre de Plataforma"></input>
 
-          <!--  <label>cuota</label>
+            <label>Precio Mensualidad</label>
+            <input name="price" type="text" placeholder="Precio Mensualidad"></input>
 
-            <input name="cuota" type="number"></input>
-
-            <label>cuota_capital</label>
-
-            <input name="cuota_capital" type="number"></input>
-
-            <label>fecha_pago</label>
-
-            <input name="fecha_pago"></input>
-
-            -->
 
         </div>
     </div>
@@ -36,4 +26,3 @@
     </form>
 
 </div>
-

@@ -15,16 +15,20 @@ class SeriesController {
 
     //ver pagina principal
     public function showHome() {
-        
+
         $this->view->showHome();
     }
 
             //ver todas las series
     public function showAllSeries() {
-
+        
+        //se traen todas las series junto a la plataforma a la que pertenecen
         $series = $this->model->getAllSeriesWithPlatforms();
 
-        $this->view->showAllSeries($series);
+
+        //pasamos plataformas para poder elegirlas en el formulario de nuevas series
+        $listplatforms = $this->model->getAllPlatforms();
+        $this->view->showAllSeries($series, $listplatforms);
     }
 
 
@@ -36,7 +40,7 @@ class SeriesController {
     }
 
 
-        //select para elegir una plataforma y ver las series que contiene
+        //select para ver las series filtradas por plataforma
     public function searchByPlatform() {
         $platforms = $this->model->getAllPlatforms();
 
@@ -64,6 +68,57 @@ class SeriesController {
 
     }
 
+    //añadir nueva serie
+
+    public function addNewSerie() {
+
+
+        if(isset($_POST['name']) && !empty($_POST['name'])&&isset($_POST['genre']) && !empty($_POST['genre'])&& !empty($_POST['price'])&&isset($_POST['choice']) && !empty($_POST['choice'])) {
+            $name = $_POST['name'];
+            $genre = $_POST['genre'];
+            $choice = $_POST['choice'];
+
+            $this->model->addNewSerie($name, $genre, $choice);
+
+        header("Location: ". BASE_URL);
+
+
+        }
+    }
+
+
+    //añadir nueva plataforma
+
+    public function addNewPlatform() {
+
+        if(isset($_POST['company']) && !empty($_POST['company'])&&isset($_POST['price'])) {
+            $company = $_POST['company'];
+            $price = $_POST['price'];
+
+            $this->model->addNewPlatform($company, $price);
+ 
+             header("Location: ". BASE_URL);
+
+        }
+    }
+
+
+    //borrar una serie
+    public function deleteSerie($id) {
+
+
+            $this->model->deleteSerie($id);
+             header("Location: ". BASE_URL);
+
     
+    }
+
+
+    //borrar una plataforma (no debe estar vinculada con ninguna serie)
+    public function deletePlatform($id) {
+        $this->model->deletePlatform($id);
+        header("Location: ". BASE_URL);
+
+    }
 
 }

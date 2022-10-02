@@ -38,21 +38,24 @@ switch ($params[0]) {
     case 'viewTask':
         $serieController->viewTask($params[1]);
         break;    
-    case 'login':
-        $adminController->login();
+    case 'addSerie':
+        $serieController->addNewSerie();
         break;
-    case 'add':
-        $adminController->addNewSerie();
-        break;
-    case 'update':
-        $adminController->updateSerie();     
+    //case 'login':
+     //   $adminController->login();
+    //    break;
+    case 'addPlatform':
+        $serieController->addNewPlatform();
+        break;    
+    //case 'update':
+      //  $serieController->updateSerie();     
     case 'deleteSerie':
         $id = $params[1];
-        $adminController->deleteSerie($id);
+        $serieController->deleteSerie($id);
         break;
     case 'deletePlatform':
         $id = $params[1];
-        $adminController->deletePlatform($id);
+        $serieController->deletePlatform($id);
         break;
     default:
         echo('404 Page not found');

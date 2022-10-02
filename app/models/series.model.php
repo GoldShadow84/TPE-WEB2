@@ -77,6 +77,41 @@ class SeriesModel {
         
     } 
 
+
+    public function addNewSerie($name, $genre, $choice) {
+        $query = $this->db->prepare("SELECT serie.*, platform.company as companies FROM serie JOIN platform ON serie.id_platform_fk = platform.id_platform WHERE platform.company = ?");
+        $query->execute(array($choice));
+        $serieandplatform = $query->fetchAll(PDO::FETCH_OBJ); 
+
+
+        $serieandplatform = $this->db->prepare("INSERT INTO serie (`name`,`genre`) VALUES (?, ?) WHERE platform.company = ?");
+        $serieandplatform->execute([$name, $genre, $choice]);
+    
+    }
+    
+    
+    public function addNewPlatform($company, $price) {
+  
+      
+        $query = $this->db->prepare("INSERT INTO platform (`company`,`price`) VALUES (?, ?)");
+        $query->execute([$company, $price]);
+    
+    }   
+
+
+    public function deleteSerie($id) {
+   
+            $query = $this->db->prepare("DELETE FROM serie WHERE id_serie = ?");
+            $query->execute([$id]);
+     
+    }
+
+    public function deletePlatform($id) {
+        
+        $query = $this->db->prepare("DELETE FROM platform WHERE id_platform = ?");
+        $query->execute([$id]);
+    }
+
 } 
 
 

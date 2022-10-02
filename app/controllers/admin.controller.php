@@ -18,13 +18,9 @@ class AdminController {
 
     }
 
-    public function addNewSerie() {
+  
 
-    }
-
-    public function addNewPlatform() {
-
-    }
+    
 
     public function updateSerie() {
 
