@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Estilos/style.css">
+    <title>Nuestras Joyas</title>
+    <link rel="icon" href="iconoweb.ico">
+</head>
+
+<body>
+
+    <div class="contenedor-2">
+
+        <header>
+            <nav>
+                <div class="logo">
+                    <p><a href="index.html">Joyeria DDS</a></p>
+                    <div class="btn_menu"><img src="images/menu.png" alt="menu"></div>
+                </div>
+                <div class="menu">
+                    <ul class="navegacion">
+                        <li><a href="index.html">Inicio</a></li>
+
+                        <li><a href="productos.html">Nuestras Joyas</a></li>
+
+                        <li><a href="contacto.html">Contacto</a></li>
+
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <div class="titular">
+            <h1 class="titularh1">Joyería en alpaca y piedras</h1>
+        </div>
+
+        <figure class="colibri">
+            <img src="images/colibri_luna.jpg" alt="img-colibri">
+        </figure>
+
+        <aside class="info-products">
+            <h4 class="titulo-products">Asesoramiento Personalizado</h4>
+            <p class="artesano">Te asesoramos a lo largo de todo el proceso de selección y te acompañamos en cada una de
+                tus decisiones, aconsejándote desde nuestra experiencia y trayectoria. Contamos con una amplia gama de
+                productos de calidad.
+                Puedes hacer un pedido personal al Artesano en <a href="contacto.html" target="_blank">Contacto</a>
+            </p>
+        </aside>
+
+        <section class="infoweb">
+            <div class="bloques">
+
+                <div class="bloque1">
+                    <p>
+                        Contamos con la mayor variedad de joyas de plata al por mayor. Comprá Anillos, Aros, Dijes,
+                        Pulseras,
+                        Cadenas, Tobilleras de la mejor calidad y al mejor precio del mercado.
+                    </p>
+                    <ul>
+                        <li> Sitio WEB exclusivo para amantes de la Joyeria</li>
+                        <li>Atención personalizada</li>
+                        <li>Garantía de calidad y seriedad.</li>
+                        <li>Precios a su alcance y con sólo una mínima compra de requisito.</li>
+                    </ul>
+                </div>
+
+                <div class="bloque2">
+                    <img src="images/mano.jpg" alt="mano">
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="infotabla">
+            <h4>Diferenciacion tipos de joyas</h4>
+            <p>En que se diferencian los diversos tipos de joyas? A Continuacion lo explicamos de forma de detallada:
+            </p>
+
+        </section>
+
+
+        <!--TABLA-->
+
+
+        <div class="tablecontainer">
+
+            <table class="tabla_sin">
+
+                <thead>
+                    <tr>
+                        <th>Tipos</th>
+                        <th>Descripcion</th>
+                        <th>Antiguedad</th>
+                        <th>Clasificacion</th>
+                        <th>BORRAR-MODIFICAR</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tabla_dinamica">
+
+                </tbody>
+
+            </table>
+
+
+        </div>
+
+        <div class="form-tabla">
+            <form class="select-products">
+                <h2>Formulario de modificación de Tabla</h2>
+                <p class="infomod">Aqui puedes Introducir, eliminar o modificar valores en la Tabla</p>
+                <label for="Tipos">Tipos</label>
+                <input id="tipos" placeholder="">
+                <label for="Descripcion">Descripcion</label>
+                <input id="descripcion" placeholder="">
+                <label for="Antiguedad">Antiguedad</label>
+                <input id="antiguedad" placeholder="">
+                <label for="Clasificacion">Clasificacion</label>
+                <input id="clasificacion" placeholder="">
+
+                <div class="boton">
+                    <button id="btn-agregar" type="button">Agregar</button>
+                    <button id="btn-agregarx3" type="button">Agregar Tres</button>
+                </div>
+
+                <p class="respuesta" id="msg">Esperando solicitud...</p>
+            </form>
+        </div>
+
+
+        <footer>
+            <div class="copyright">
+                <p>@Copyright 2022 - JoyeriaDDS - Todos los Derechos Reservados</p>
+            </div>
+
+            <div class="metodospago">
+                <p>Contamos con varios metodos de pago!</p>
+                <img src="images/metodospago.jpg" alt="metodos-pago">
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="JS/main.js"></script>
+    <script src="JS/tabla-ajax.js"></script>
+
+</body>
+
+</html>

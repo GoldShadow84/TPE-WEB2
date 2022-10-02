@@ -1,10 +1,12 @@
 <?php
-require_once './controllers/pay.controller.php';
+require_once './app/controllers/series.controller.php';
+require_once './app/controllers/admin.controller.php';
+
 require_once('./libs/smarty/Smarty.class.php');
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
-$action = 'list'; // acción por defecto
+$action = 'home'; // acción por defecto
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 }
@@ -13,21 +15,44 @@ if (!empty($_GET['action'])) {
 $params = explode('/', $action);
 
 // instancio el unico controller que existe por ahora
-$payController = new PayController();
-
+$serieController = new SeriesController();
+$adminController = new AdminController();
 
 // tabla de ruteo
 switch ($params[0]) {
-    case 'list':
-        $payController->showPayments();
+    case 'home':
+        $serieController->showHome();
+        break;
+    case 'series':
+        $serieController->showAllSeries();
+        break;
+    case 'platforms':
+        $serieController->showAllPlatforms();
+        break;   
+    case 'search':
+        $serieController->searchByPlatform();
+        break;       
+    case 'filter':
+        $serieController->seriesFiltred();
+        break;
+    case 'viewTask':
+        $serieController->viewTask($params[1]);
+        break;    
+    case 'login':
+        $adminController->login();
         break;
     case 'add':
-        $payController->etc();
+        $adminController->addNewSerie();
         break;
-    case 'delete':
-        // obtengo el parametro de la acción
+    case 'update':
+        $adminController->updateSerie();     
+    case 'deleteSerie':
         $id = $params[1];
-        $payController->deletePayment($id);
+        $adminController->deleteSerie($id);
+        break;
+    case 'deletePlatform':
+        $id = $params[1];
+        $adminController->deletePlatform($id);
         break;
     default:
         echo('404 Page not found');
