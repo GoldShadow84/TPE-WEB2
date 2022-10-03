@@ -24,11 +24,11 @@ class SeriesController {
         
         //se traen todas las series junto a la plataforma a la que pertenecen
         $series = $this->model->getAllSeriesWithPlatforms();
+        $platforms = $this->model->getAllPlatforms();
 
 
-        //pasamos plataformas para poder elegirlas en el formulario de nuevas series
-        $listplatforms = $this->model->getAllPlatforms();
-        $this->view->showAllSeries($series, $listplatforms);
+        //pasamos plataformas/series para poder elegirlas en el formulario de nuevas series
+        $this->view->showAllSeries($series, $platforms);
     }
 
 
@@ -73,17 +73,16 @@ class SeriesController {
     public function addNewSerie() {
 
 
-        if(isset($_POST['name']) && !empty($_POST['name'])&&isset($_POST['genre']) && !empty($_POST['genre'])&& !empty($_POST['price'])&&isset($_POST['choice']) && !empty($_POST['choice'])) {
             $name = $_POST['name'];
             $genre = $_POST['genre'];
             $choice = $_POST['choice'];
-
+            
             $this->model->addNewSerie($name, $genre, $choice);
 
-        header("Location: ". BASE_URL);
+          header("Location: ". BASE_URL);
 
 
-        }
+    
     }
 
 

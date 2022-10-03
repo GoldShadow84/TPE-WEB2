@@ -24,9 +24,9 @@ class SeriesView {
         
         $this->smarty->assign('titulo', 'Lista de Series');
         $this->smarty->assign('series', $series);
-
-
         $this->smarty->assign('platforms', $platforms);
+
+        
        $this->smarty->display('templates/showAllSeries.tpl');
        $this->smarty->display('templates/form_serie.tpl');
         

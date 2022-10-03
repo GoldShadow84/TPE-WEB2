@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-10-2022 a las 20:35:00
+-- Tiempo de generación: 03-10-2022 a las 01:39:46
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -41,7 +41,7 @@ INSERT INTO `platform` (`id_platform`, `company`, `price`) VALUES
 (1, 'netflix', 800),
 (2, 'hbo', 500),
 (3, 'prime', 500),
-(4, 'disneyplus', 1200);
+(7, 'disney plus', 1200);
 
 -- --------------------------------------------------------
 
@@ -62,13 +62,21 @@ CREATE TABLE `serie` (
 --
 
 INSERT INTO `serie` (`id_serie`, `name`, `genre`, `image`, `id_platform_fk`) VALUES
-(1, 'breaking bad', 'accion', '', 1),
-(2, 'better call saul', 'accion', '', 1),
 (3, 'mr.robot', 'drama', '', 3),
-(4, 'loki', 'accion', '', 4),
 (5, 'hand\'smaid-tail', 'drama', '', 1),
-(6, 'game of thrones', 'drama', '', 2),
-(7, 'chernobyl', 'drama', '', 2);
+(6, 'game of thrones', 'drama', '', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
+
+CREATE TABLE `users` (
+  `id_users` int(11) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Índices para tablas volcadas
@@ -88,6 +96,12 @@ ALTER TABLE `serie`
   ADD KEY `id_platform_fk` (`id_platform_fk`);
 
 --
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id_users`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -95,13 +109,19 @@ ALTER TABLE `serie`
 -- AUTO_INCREMENT de la tabla `platform`
 --
 ALTER TABLE `platform`
-  MODIFY `id_platform` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_platform` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `serie`
 --
 ALTER TABLE `serie`
   MODIFY `id_serie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas

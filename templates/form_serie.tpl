@@ -24,7 +24,7 @@
                 
                                             
                                 {foreach $platforms as $platform }
-                                <option value="{$platform->company}">{$platform->company}</option>
+                                <option value="{$platform->id_platform}">{$platform->id_platform}({$platform->company})</option>
                                 {/foreach}  
 
                         </select>
