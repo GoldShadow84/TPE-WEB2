@@ -112,6 +112,21 @@ class SeriesModel {
         $query->execute([$id]);
     }
 
+    public function updateSerie($id, $name, $genre, $choice) {
+
+        $query = $this->db->prepare('UPDATE serie SET name = ?, genre = ?, id_platform_fk = ? WHERE id_serie = ?');
+
+        $query->execute([$name, $genre, $choice, $id]);
+    }
+
+    public function updatePlatform($id, $company, $price) {
+
+        $query = $this->db->prepare('UPDATE platform SET company = ?, price = ? WHERE id_platform = ?');
+
+        $query->execute([$company, $price, $id]);
+    }
+
+
 } 
 
 

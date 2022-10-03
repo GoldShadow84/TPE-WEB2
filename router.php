@@ -41,15 +41,23 @@ switch ($params[0]) {
     case 'addSerie':
         $serieController->addNewSerie();
         break;
-        case 'addPlatform':
-            $serieController->addNewPlatform();
-            break;    
-    //case 'login':
-     //   $adminController->login();
-    //    break;
-  
-    //case 'update':
-      //  $serieController->updateSerie();     
+    case 'addPlatform':
+        $serieController->addNewPlatform();
+        break;      
+    case 'updateSerie':
+        $id = $params[1];
+       $serieController->updateSerie($id);   
+        break;
+    case 'confirmUpdSerie':
+       $serieController->confirmUpdateSerie();  
+        break;
+    case 'updatePlatform':
+        $id = $params[1];
+    $serieController->updatePlatform($id);   
+        break;
+    case 'confirmUpdPlatform':
+    $serieController->confirmUpdatePlatform();  
+        break;
     case 'deleteSerie':
         $id = $params[1];
         $serieController->deleteSerie($id);
@@ -58,6 +66,9 @@ switch ($params[0]) {
         $id = $params[1];
         $serieController->deletePlatform($id);
         break;
+            //case 'login':
+     //   $adminController->login();
+    //    break;
     default:
         echo('404 Page not found');
         break;

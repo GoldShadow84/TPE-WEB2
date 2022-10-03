@@ -1,10 +1,12 @@
+    {include 'templates\header.tpl'}
 
+    
 
 <div class="container">
 
-    <h1>Añadir</h1>
+    <h1>Actualizar</h1>
 
-    <form action="addSerie" method="POST">
+    <form action="confirmUpdSerie" method="POST">
 
     <h2>Ingrese los datos</h2>
 
@@ -27,7 +29,12 @@
                                 <option value="{$platform->id_platform}">{$platform->id_platform}({$platform->company})</option>
                                 {/foreach}  
 
+                              
+
                         </select>
+                    <select name="id" class="form-selected">
+                              <option value="{$id}">{$id}</option>
+                    </select>   
 
             <label>Archivo Imagen-Serie</label>
             <input name="image" type="file" placeholder="Archivo Imagen-Serie"></input>
@@ -41,4 +48,8 @@
     </form>
 
 </div>
+
+
+
+    {include 'templates\footer.tpl'}
 

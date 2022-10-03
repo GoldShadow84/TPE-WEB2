@@ -15,7 +15,7 @@
               
 
                   <a href='deletePlatform/{$platform->id_platform}' type='button' class='btn btn-danger ml-auto'>Borrar</a>
-                <a href='update/{$platform->id_platform}' type='button' class='btn btn-danger ml-auto'>Actualizar</a>
+                <a href='updatePlatform/{$platform->id_platform}' type='button' class='btn btn-danger ml-auto'>Actualizar</a>
 
                   </li> 
 

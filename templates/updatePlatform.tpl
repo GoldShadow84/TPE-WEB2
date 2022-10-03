@@ -1,10 +1,11 @@
 
+    {include 'templates\header.tpl'}
 
 <div class="container">
 
-    <h1>Añadir</h1>
+    <h1>Actualizar</h1>
 
-    <form action="addPlatform" method="POST">
+    <form action="confirmUpdPlatform" method="POST">
 
     <h2>Ingrese los datos</h2>
 
@@ -17,7 +18,9 @@
             <label>Precio Mensualidad</label>
             <input name="price" type="text" placeholder="Precio Mensualidad"></input>
 
-
+            <select name="id" class="form-selected">
+                <option value="{$id}">{$id}</option>
+                </select>   
         </div>
     </div>
 
@@ -26,3 +29,6 @@
     </form>
 
 </div>
+
+ {include 'templates\footer.tpl'}
+

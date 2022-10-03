@@ -72,7 +72,7 @@ class SeriesController {
 
     public function addNewSerie() {
 
-        
+        if(isset($_POST['name']) && !empty($_POST['name'])&&isset($_POST['genre']) && !empty($_POST['genre'])&&isset($_POST['choice']) && !empty($_POST['choice'])) {   
             $name = $_POST['name'];
             $genre = $_POST['genre'];
             $choice = $_POST['choice'];
@@ -81,6 +81,11 @@ class SeriesController {
 
           header("Location: ". BASE_URL);
 
+        }   
+        else {
+            $this->view->showErrorEmptyForm();
+        }
+           
 
     
     }
@@ -97,7 +102,9 @@ class SeriesController {
             $this->model->addNewPlatform($company, $price);
  
              header("Location: ". BASE_URL);
-
+        }
+        else {
+            $this->view->showErrorEmptyForm();
         }
     }
 
@@ -119,5 +126,79 @@ class SeriesController {
         header("Location: ". BASE_URL);
 
     }
+
+
+    //ir al formulario para actualizar una serie
+    public function updateSerie($id) {
+
+        $series = $this->model->getAllSeries();
+        $platforms = $this->model->getAllPlatforms();
+        
+        $this->view->formUpdateSerie($id, $series, $platforms);
+    }
+
+
+
+    //realizamos el update sql en la base de datos
+
+
+    public function confirmUpdateSerie() {
+
+        if(isset($_POST['id']) && !empty($_POST['id'])&&isset($_POST['name']) && !empty($_POST['name'])&&isset($_POST['genre']) && !empty($_POST['genre'])&&isset($_POST['choice']) && !empty($_POST['choice'])) {
+
+            $id = $_POST['id'];
+            $name = $_POST['name'];
+            $genre = $_POST['genre'];
+            $choice = $_POST['choice'];
+
+            $this->model->updateSerie($id, $name, $genre, $choice);
+
+            header("Location: ". BASE_URL);   
+        }
+        else {
+            $this->view->showErrorEmptyForm();
+            
+        }   
+
+             
+    }
+
+
+    //ir al formulario para actualizar una  plataforma
+
+    public function updatePlatform($id) {
+
+        $series = $this->model->getAllSeries();
+        $platforms = $this->model->getAllPlatforms();
+        
+        $this->view->formUpdatePlatform($id, $series, $platforms);
+    }
+
+
+
+    //realizamos el update sql en la base de datos
+    public function confirmUpdatePlatform() {
+
+        
+        if(isset($_POST['id']) && !empty($_POST['id'])&&isset($_POST['company']) && !empty($_POST['company'])&&isset($_POST['price']) && !empty($_POST['price'])) {
+
+            $id = $_POST['id'];
+            $company = $_POST['company'];
+            $price = $_POST['price'];
+
+            $this->model->updatePlatform($id, $company, $price);
+ 
+             header("Location: ". BASE_URL);
+        }
+        else {
+            $this->view->showErrorEmptyForm();
+
+        }
+    }
+ 
+
+
+ 
+
 
 }

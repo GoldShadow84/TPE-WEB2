@@ -64,7 +64,29 @@ class SeriesView {
         $this->smarty->display('templates/showSerieInfo.tpl');
     }
 
+    function formUpdateSerie($id, $series, $platforms) {
 
+        $this->smarty->assign('id', $id);
+           $this->smarty->assign('series', $series);
+        $this->smarty->assign('platforms', $platforms);
+
+       $this->smarty->display('templates/updateSerie.tpl');
+    }
+
+    function formUpdatePlatform($id, $series, $platforms) {
+
+        $this->smarty->assign('id', $id);
+           $this->smarty->assign('series', $series);
+        $this->smarty->assign('platforms', $platforms);
+
+       $this->smarty->display('templates/updatePlatform.tpl');
+    }
+
+    function showErrorEmptyForm() {
+        $this->smarty->assign('error', 'Datos vacios!');
+        $this->smarty->display('templates/emptyError.tpl');
+
+    }
 
 
 
