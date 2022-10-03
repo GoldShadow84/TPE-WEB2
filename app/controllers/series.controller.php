@@ -79,7 +79,10 @@ class SeriesController {
             
             $this->model->addNewSerie($name, $genre, $choice);
 
-          header("Location: ". BASE_URL);
+           // header("Location: ver");
+           //     header("Location: " . VER);
+           header("Location: ". BASE_URL);
+            
 
         }   
         else {
@@ -101,7 +104,10 @@ class SeriesController {
 
             $this->model->addNewPlatform($company, $price);
  
-             header("Location: ". BASE_URL);
+           // header("Location: ver");
+            //header("Location: " . VER);
+            header("Location: ". BASE_URL);
+            
         }
         else {
             $this->view->showErrorEmptyForm();
@@ -122,8 +128,12 @@ class SeriesController {
 
     //borrar una plataforma (no debe estar vinculada con ninguna serie)
     public function deletePlatform($id) {
+
         $this->model->deletePlatform($id);
-        header("Location: ". BASE_URL);
+      //  header("Location: ../ver");
+      //  header("Location: " . VER);
+      header("Location: ". BASE_URL);
+
 
     }
 
@@ -153,7 +163,10 @@ class SeriesController {
 
             $this->model->updateSerie($id, $name, $genre, $choice);
 
-            header("Location: ". BASE_URL);   
+           // header("Location: ../ver");
+           // header("Location: " . VER);
+           header("Location: ". BASE_URL);
+
         }
         else {
             $this->view->showErrorEmptyForm();
@@ -188,7 +201,11 @@ class SeriesController {
 
             $this->model->updatePlatform($id, $company, $price);
  
-             header("Location: ". BASE_URL);
+            //header("Location: ../ver");
+            //header("Location: " . VER);
+            header("Location: ". BASE_URL);
+            
+    
         }
         else {
             $this->view->showErrorEmptyForm();

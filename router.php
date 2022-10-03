@@ -1,22 +1,37 @@
 <?php
 require_once './app/controllers/series.controller.php';
-require_once './app/controllers/admin.controller.php';
+require_once './app/controllers/login.controller.php';
 
 require_once('./libs/smarty/Smarty.class.php');
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
+define('LOGIN', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/login');
+
+define('LOGOUT', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/logout');
+
 $action = 'home'; // acción por defecto
-if (!empty($_GET['action'])) {
+
+
+
+if(!empty($_GET['action'])) {
     $action = $_GET['action'];
 }
+
+/*
+if ($_GET['action'] == '')
+$_GET['action'] = 'ver';
+$_GET['action'] = 'login';
+*/
+
+
 
 // parsea la accion Ej: dev/juan --> ['dev', juan]
 $params = explode('/', $action);
 
 // instancio el unico controller que existe por ahora
 $serieController = new SeriesController();
-$adminController = new AdminController();
+$loginController = new LoginController();
 
 // tabla de ruteo
 switch ($params[0]) {
@@ -66,9 +81,12 @@ switch ($params[0]) {
         $id = $params[1];
         $serieController->deletePlatform($id);
         break;
-            //case 'login':
-     //   $adminController->login();
-    //    break;
+    case 'login':
+        $loginController->showLogin();
+        break;
+    case 'verify':
+        $loginController->verifyLogin();
+        break;
     default:
         echo('404 Page not found');
         break;
