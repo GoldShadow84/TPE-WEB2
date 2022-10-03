@@ -41,12 +41,13 @@ switch ($params[0]) {
     case 'addSerie':
         $serieController->addNewSerie();
         break;
+        case 'addPlatform':
+            $serieController->addNewPlatform();
+            break;    
     //case 'login':
      //   $adminController->login();
     //    break;
-    case 'addPlatform':
-        $serieController->addNewPlatform();
-        break;    
+  
     //case 'update':
       //  $serieController->updateSerie();     
     case 'deleteSerie':

@@ -72,7 +72,7 @@ class SeriesController {
 
     public function addNewSerie() {
 
-
+        
             $name = $_POST['name'];
             $genre = $_POST['genre'];
             $choice = $_POST['choice'];

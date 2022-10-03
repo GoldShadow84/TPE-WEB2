@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-3">
                     <div class="form-group">
-                        <label>Prioridad</label>
+
                         <select name="choice" class="form-selected">
                             <option selected>Selecciona una Plataforma</option>
                 
