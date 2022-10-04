@@ -1,5 +1,6 @@
 <?php
 require_once './app/controllers/series.controller.php';
+require_once './app/controllers/platforms.controller.php';
 require_once './app/controllers/login.controller.php';
 
 require_once('./libs/smarty/Smarty.class.php');
@@ -24,6 +25,7 @@ $params = explode('/', $action);
 
 // instancio ambos controladores
 $serieController = new SeriesController();
+$platformsController = new PlatformsController();
 $loginController = new LoginController();
 
 
@@ -39,13 +41,13 @@ switch ($params[0]) {
         $serieController->showAllSeries();
         break;
     case 'platforms':
-        $serieController->showAllPlatforms();
+        $platformsController->showAllPlatforms();
         break;   
     case 'search':
-        $serieController->searchByPlatform();
+        $platformsController->searchByPlatform();
         break;       
     case 'filter':
-        $serieController->seriesFiltred();
+        $platformsController->seriesFiltred();
         break;
     case 'viewSerie':
         $serieController->viewSerie($params[1]);
@@ -64,7 +66,7 @@ switch ($params[0]) {
         $serieController->addNewSerie();
         break;
     case 'addPlatform':
-        $serieController->addNewPlatform();
+        $platformsController->addNewPlatform();
         break;      
     case 'updateSerie':
         $id = $params[1];
@@ -75,10 +77,10 @@ switch ($params[0]) {
         break;
     case 'updatePlatform':
         $id = $params[1];
-    $serieController->updatePlatform($id);   
+        $platformsController->updatePlatform($id);   
         break;
     case 'confirmUpdPlatform':
-    $serieController->confirmUpdatePlatform();  
+        $platformsController->confirmUpdatePlatform();  
         break;
     case 'deleteSerie':
         $id = $params[1];
@@ -86,7 +88,7 @@ switch ($params[0]) {
         break;
     case 'deletePlatform':
         $id = $params[1];
-        $serieController->deletePlatform($id);
+        $platformsController->deletePlatform($id);
         break;  
     default:
         echo('404 Page not found');

@@ -40,43 +40,6 @@ class SeriesModel {
         return $series;
     }
 
-    //obtener todas las plataformas
-    public function getAllPlatforms() {
-   
-
-        $query = $this->db->prepare("SELECT * FROM platform");
-        $query->execute();
-
-        
-        $platforms = $query->fetchAll(PDO::FETCH_OBJ); 
-        
-
-        return $platforms;
-    }
-
-    //obtener todas las series junto a las compañias/plataformas a las que estan vinculadas
-    public function getAllSeriesWithPlatforms() {
-
-        $query = $this->db->prepare("SELECT serie.*, platform.company as companies FROM serie JOIN platform ON serie.id_platform_fk = platform.id_platform");
-        $query->execute();
-        $serieandplatform = $query->fetchAll(PDO::FETCH_OBJ); 
-
-    
-
-        return $serieandplatform;
-    }
-
-    //traer solo las series que esten vinculadas a cierta plataforma
-    public function getSeriesByPlatforms($choice) {
-
-        $query = $this->db->prepare("SELECT serie.*, platform.company as companies FROM serie JOIN platform ON serie.id_platform_fk = platform.id_platform WHERE platform.company = ?");
-        $query->execute(array($choice));
-        $serieandplatform = $query->fetchAll(PDO::FETCH_OBJ); 
-
-        return $serieandplatform;
-        
-    } 
-
     //añadir una nueva serie
     public function addNewSerie($name, $genre, $choice) {
 
@@ -84,15 +47,6 @@ class SeriesModel {
 
         $query->execute([$name, $genre, $choice]);
     }
-
-    //añadir nueva plataforma
-    public function addNewPlatform($company, $price) {
-  
-      
-        $query = $this->db->prepare("INSERT INTO platform (company, price) VALUES (?, ?)");
-        $query->execute([$company, $price]);
-    
-    }   
 
     //borrar una serie segun su id
     public function deleteSerie($id) {
@@ -102,13 +56,6 @@ class SeriesModel {
      
     }
 
-    //borrar una plataforma segun su id
-    public function deletePlatform($id) {
-        
-        $query = $this->db->prepare("DELETE FROM platform WHERE id_platform = ?");
-        $query->execute([$id]);
-    }
-
     //actualizar una serie segun su id
     public function updateSerie($id, $name, $genre, $choice) {
 
@@ -116,15 +63,6 @@ class SeriesModel {
 
         $query->execute([$name, $genre, $choice, $id]);
     }
-
-    //actualizar una plataforma segun su id
-    public function updatePlatform($id, $company, $price) {
-
-        $query = $this->db->prepare('UPDATE platform SET company = ?, price = ? WHERE id_platform = ?');
-
-        $query->execute([$company, $price, $id]);
-    }
-
 
 } 
 
