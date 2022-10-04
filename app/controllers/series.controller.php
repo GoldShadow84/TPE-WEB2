@@ -18,7 +18,7 @@ class SeriesController {
         $this->view = new SeriesView();
     }
 
-
+    
       //redirecciones
     public function showHomeLocation() {
         header("Location: ". BASE_URL."home");
@@ -32,11 +32,8 @@ class SeriesController {
         header("Location: ". BASE_URL."platforms");
     }
 
-
-
+    
     //funciones ver, filtrar, añadir, eliminar, actualizar
-
-
 
       //ver pagina principal
     public function showHome() {
@@ -46,8 +43,6 @@ class SeriesController {
 
         $this->view->showHome($logged);
     }
-
-
 
         //ver todas las series
     public function showAllSeries() {
@@ -63,9 +58,6 @@ class SeriesController {
         $this->view->showAllSeries($series, $platforms, $logged);
     }
 
-
-
-
         //ver todas las plataformas
     public function showAllPlatforms() {
         $platforms = $this->model->getAllPlatforms();
@@ -75,9 +67,6 @@ class SeriesController {
 
         $this->view->showAllPlatforms($platforms, $logged);
     }
-
-
-
 
         //select para ver las series filtradas por plataforma
     public function searchByPlatform() {
@@ -89,9 +78,6 @@ class SeriesController {
 
         $this->view->searchByPlatform($platforms, $logged);
     }
-
-
-
 
     //ver series con la plataforma elegida con el select
     public function seriesFiltred() {
@@ -107,9 +93,6 @@ class SeriesController {
         }
     }   
 
-
-
-
     //ver en detalle una serie particular
     public function viewSerie($id) {
 
@@ -123,11 +106,7 @@ class SeriesController {
 
     }
 
-
-
-
     //añadir nueva serie
-
     public function addNewSerie() {
 
         if(isset($_POST['name']) && !empty($_POST['name'])&&isset($_POST['genre']) && !empty($_POST['genre'])&&isset($_POST['choice']) && !empty($_POST['choice'])) {   
@@ -147,11 +126,7 @@ class SeriesController {
     
     }
 
-
-
-
     //añadir nueva plataforma
-
     public function addNewPlatform() {
 
         if(isset($_POST['company']) && !empty($_POST['company'])&&isset($_POST['price'])) {
@@ -168,9 +143,6 @@ class SeriesController {
         }
     }
 
-
-
-
     //borrar una serie
     public function deleteSerie($id) {
 
@@ -180,9 +152,6 @@ class SeriesController {
 
     }
 
-
-
-
     //borrar una plataforma (no debe estar vinculada con ninguna serie)
     public function deletePlatform($id) {
 
@@ -191,10 +160,6 @@ class SeriesController {
         $this->showPlatformsLocation();
 
     }
-
-
-
-
 
     //ir al formulario para actualizar una serie
     public function updateSerie($id) {
@@ -207,12 +172,7 @@ class SeriesController {
         $this->view->formUpdateSerie($id, $series, $platforms, $logged);
     }
 
-
-
-
     //realizamos el update sql en la base de datos
-
-
     public function confirmUpdateSerie() {
 
         if(isset($_POST['id']) && !empty($_POST['id'])&&isset($_POST['name']) && !empty($_POST['name'])&&isset($_POST['genre']) && !empty($_POST['genre'])&&isset($_POST['choice']) && !empty($_POST['choice'])) {
@@ -234,9 +194,6 @@ class SeriesController {
   
     }
 
-
-
-
     //ir al formulario para actualizar una  plataforma
 
     public function updatePlatform($id) {
@@ -248,9 +205,6 @@ class SeriesController {
         
         $this->view->formUpdatePlatform($id, $series, $platforms, $logged);
     }
-
-
-
 
     //realizamos el update sql en la base de datos
     public function confirmUpdatePlatform() {

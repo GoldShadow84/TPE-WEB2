@@ -9,8 +9,6 @@ class SeriesModel {
         $this->db = new PDO('mysql:host=localhost;'.'dbname=db_series;charset=utf8', 'root', '');
     }
 
-
-
     //devuelve lista de series completa
     public function getAllSeries() {
         // 1. abro conexión a la DB
@@ -25,7 +23,6 @@ class SeriesModel {
         
         return $series;
     }
-
 
     //obtener informacion de una serie en particular, segun su id
     public function getSeriesById($id) {
@@ -43,7 +40,6 @@ class SeriesModel {
         return $series;
     }
 
-
     //obtener todas las plataformas
     public function getAllPlatforms() {
    
@@ -58,7 +54,6 @@ class SeriesModel {
         return $platforms;
     }
 
-    
     //obtener todas las series junto a las compañias/plataformas a las que estan vinculadas
     public function getAllSeriesWithPlatforms() {
 
@@ -71,7 +66,6 @@ class SeriesModel {
         return $serieandplatform;
     }
 
-
     //traer solo las series que esten vinculadas a cierta plataforma
     public function getSeriesByPlatforms($choice) {
 
@@ -83,7 +77,6 @@ class SeriesModel {
         
     } 
 
-
     //añadir una nueva serie
     public function addNewSerie($name, $genre, $choice) {
 
@@ -92,7 +85,6 @@ class SeriesModel {
         $query->execute([$name, $genre, $choice]);
     }
 
-  
     //añadir nueva plataforma
     public function addNewPlatform($company, $price) {
   
@@ -102,7 +94,6 @@ class SeriesModel {
     
     }   
 
-
     //borrar una serie segun su id
     public function deleteSerie($id) {
    
@@ -111,14 +102,12 @@ class SeriesModel {
      
     }
 
-
     //borrar una plataforma segun su id
     public function deletePlatform($id) {
         
         $query = $this->db->prepare("DELETE FROM platform WHERE id_platform = ?");
         $query->execute([$id]);
     }
-
 
     //actualizar una serie segun su id
     public function updateSerie($id, $name, $genre, $choice) {
@@ -127,7 +116,6 @@ class SeriesModel {
 
         $query->execute([$name, $genre, $choice, $id]);
     }
-
 
     //actualizar una plataforma segun su id
     public function updatePlatform($id, $company, $price) {

@@ -15,7 +15,6 @@ class LoginController {
         $this->authHelper = new AuthHelper();
     }
 
-
     //mostrar formulario login
     public function showLogin() {
 
@@ -24,7 +23,6 @@ class LoginController {
         $this->view->showLogin($logged);
 
     }
-
 
     //verificar si el usuario está logueado
     public function verifyLogin() {
@@ -49,13 +47,11 @@ class LoginController {
             
         }
 
-
     //desloguear/salir de la sesion
     public function logout() {
         $this->authHelper->logout();
         header('Location: ' . LOGIN);
     }    
-
 
     //redirigir a home
     public function showHomeLocation() {

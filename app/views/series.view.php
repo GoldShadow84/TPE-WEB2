@@ -11,7 +11,6 @@ class SeriesView {
         $this->smarty->assign('basehref', BASE_URL);
 
     }
-    
 
     //Ver home
     function showHome($logged) { 
@@ -22,7 +21,6 @@ class SeriesView {
         $this->smarty->display('templates/home.tpl');   
 
     }
-
 
     //mostrar lista series con plataformas entre parentesis
     function showAllSeries($series, $platforms, $logged) {
@@ -37,7 +35,6 @@ class SeriesView {
        $this->smarty->display('templates/showAllSeries.tpl');
         
     }
-
 
     //mostrar lista plataformas
     function showAllPlatforms($platforms, $logged) {
@@ -61,7 +58,6 @@ class SeriesView {
 
     }
 
-
     //lista de series filtrada por plataformas
     function showSeriesByPlatform($series, $logged)  {
 
@@ -71,7 +67,6 @@ class SeriesView {
         $this->smarty->display('templates/showFiltredSeries.tpl');
 
     }
-
 
     //ver una serie en concreto
     function viewSerie($series, $logged) {
@@ -83,7 +78,6 @@ class SeriesView {
 
         $this->smarty->display('templates/showSerieInfo.tpl');
     }
-
 
     //formulario para actualizar serie
     function formUpdateSerie($id, $series, $platforms, $logged) {
@@ -98,7 +92,6 @@ class SeriesView {
        $this->smarty->display('templates/updateSerie.tpl');
     }
 
-
     //formulario para actualizar plataforma
     function formUpdatePlatform($id, $series, $platforms, $logged) {
 
@@ -112,7 +105,6 @@ class SeriesView {
        $this->smarty->display('templates/updatePlatform.tpl');
     }
 
-
     //mensaje de error si el formulario esta vacio
     function showErrorEmptyForm($logged) {
 
@@ -122,7 +114,6 @@ class SeriesView {
         $this->smarty->display('templates/emptyError.tpl');
 
     }
-
 
 
 }

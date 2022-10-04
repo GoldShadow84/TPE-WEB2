@@ -17,12 +17,10 @@ class AuthHelper {
 
     }
 
-
     public function logout() {
         session_start();
         session_destroy();
     }
-
 
     public function checkLoggedIn() {
        session_start();

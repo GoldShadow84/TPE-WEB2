@@ -13,25 +13,18 @@ define('LOGIN', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . d
 $action = 'home'; // acción por defecto
 
 
-
-
 if(!empty($_GET['action'])) {
     $action = $_GET['action'];
 }
-
-
 
 
 // parsea la accion Ej: dev/juan --> ['dev', juan]
 $params = explode('/', $action);
 
 
-
-
 // instancio ambos controladores
 $serieController = new SeriesController();
 $loginController = new LoginController();
-
 
 
 
@@ -57,7 +50,6 @@ switch ($params[0]) {
     case 'viewSerie':
         $serieController->viewSerie($params[1]);
         break;    
-
         //Casos para Usuarios Logueados
     case 'login':
         $loginController->showLogin();
@@ -66,7 +58,8 @@ switch ($params[0]) {
         $loginController->verifyLogin();
         break;
     case 'logout':
-        $loginController->logout();      
+        $loginController->logout();   
+        break;   
     case 'addSerie':
         $serieController->addNewSerie();
         break;
