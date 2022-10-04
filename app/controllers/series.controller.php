@@ -260,7 +260,8 @@ class SeriesController {
 
             $id = $_POST['id'];
             $company = $_POST['company'];
-            $price = $_POST['price'];
+            $price = $_POST['price'];   
+           
 
             $this->model->updatePlatform($id, $company, $price);
  
