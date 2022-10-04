@@ -15,5 +15,4 @@ class LoginModel {
         return $query->fetch(PDO::FETCH_OBJ);
     }
 
-
 } 

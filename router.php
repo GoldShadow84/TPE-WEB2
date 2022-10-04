@@ -8,9 +8,10 @@ define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] 
 
 define('LOGIN', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/login');
 
-define('LOGOUT', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/logout');
+
 
 $action = 'home'; // acción por defecto
+
 
 
 
@@ -18,23 +19,26 @@ if(!empty($_GET['action'])) {
     $action = $_GET['action'];
 }
 
-/*
-if ($_GET['action'] == '')
-$_GET['action'] = 'ver';
-$_GET['action'] = 'login';
-*/
 
 
 
 // parsea la accion Ej: dev/juan --> ['dev', juan]
 $params = explode('/', $action);
 
-// instancio el unico controller que existe por ahora
+
+
+
+// instancio ambos controladores
 $serieController = new SeriesController();
 $loginController = new LoginController();
 
+
+
+
 // tabla de ruteo
+
 switch ($params[0]) {
+   
     case 'home':
         $serieController->showHome();
         break;
@@ -53,6 +57,16 @@ switch ($params[0]) {
     case 'viewTask':
         $serieController->viewTask($params[1]);
         break;    
+
+        //Casos para Usuarios Logueados
+    case 'login':
+        $loginController->showLogin();
+        break;
+    case 'verify':
+        $loginController->verifyLogin();
+        break;
+    case 'logout':
+        $loginController->logout();      
     case 'addSerie':
         $serieController->addNewSerie();
         break;
@@ -80,13 +94,7 @@ switch ($params[0]) {
     case 'deletePlatform':
         $id = $params[1];
         $serieController->deletePlatform($id);
-        break;
-    case 'login':
-        $loginController->showLogin();
-        break;
-    case 'verify':
-        $loginController->verifyLogin();
-        break;
+        break;  
     default:
         echo('404 Page not found');
         break;

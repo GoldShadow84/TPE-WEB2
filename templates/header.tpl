@@ -27,7 +27,18 @@
                           <li> <a class="nav-link" aria-current="page" href="series">Series</a></li>
                           <li> <a class="nav-link" aria-current="page" href="platforms">Plataformas</a></li>
                           <li> <a class="nav-link" aria-current="page" href="search">Buscar</a></li>
-                          <li> <a class="nav-link" aria-current="page" href="login">Login</a></li>
+                        
+                          {if $logged}
+                          <li> <a class="nav-link" aria-current="page" href="logout">Logout</a></li>
+                          {/if}
+                          
+                        {if $logged == false}
+                            <li> <a class="nav-link" aria-current="page" href="login">Login</a></li>
+                         {/if} 
+                         
+
+                           
+                      
                       </ul>
                   </div>
               </nav>

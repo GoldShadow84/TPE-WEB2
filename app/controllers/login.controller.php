@@ -17,7 +17,9 @@ class LoginController {
 
     public function showLogin() {
 
-        $this->view->showLogin();
+        //si esta logeado se ve login en el head, si no lo está, se ve logout.
+        $logged = $this->authHelper->checkLoggedIn();
+        $this->view->showLogin($logged);
 
     }
 
@@ -26,37 +28,32 @@ class LoginController {
             $email = $_POST['email'];
             $password = $_POST['password'];
 
-        
-            //$hash = password_hash($password, PASSWORD_DEFAULT);
-           
-
+    
             $user = $this->model->getByEmail($email);
 
             if (!empty($user) && password_verify($password, $user->password)) {
 
 
                 $this->authHelper->login($user);
+                $this->showHomeLocation();
     
-                header('Location: ver');
+                
             } else {
                 $this->view->showLogin("Login incorrecto");
             }
-
-
-
-            /*
-            Obtener el $password del formulario que envía el usuario
-Obtener el $hash de la base de datos
-
-if (password_verify($password, $hash))
-     Credenciales válidas
-else
-     Credenciales invalidas
-
-
-            */
+            
         }
 
+        public function logout() {
+            $this->authHelper->logout();
+            header('Location: ' . LOGIN);
+        }    
+
+
+        public function showHomeLocation() {
+            header("Location: ". BASE_URL."home");
+        }
+    
             
   
 

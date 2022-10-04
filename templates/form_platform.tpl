@@ -10,11 +10,9 @@
 
     <div class="col-3">
         <div>
-            <label>Nombre de la Plataforma</label>
 
             <input name="company" type="text" placeholder="Nombre de Plataforma"></input>
 
-            <label>Precio Mensualidad</label>
             <input name="price" type="text" placeholder="Precio Mensualidad"></input>
 
 

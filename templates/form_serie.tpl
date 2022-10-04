@@ -11,14 +11,11 @@
 
     <div class="col-3">
         <div>
-            <label>Nombre de la Serie</label>
 
             <input name="name" type="text" placeholder="Nombre de la Serie"></input>
 
-            <label>Genero de la Serie</label>
             <input name="genre" type="text" placeholder="Genero de la Serie"></input>
 
-              <label>Plataforma a la que Pertenece</label>
                 <select name="choice" class="form-selected">
                             <option selected>Selecciona una Plataforma</option>
                 
@@ -29,7 +26,6 @@
 
                         </select>
 
-            <label>Archivo Imagen-Serie</label>
             <input name="image" type="file" placeholder="Archivo Imagen-Serie"></input>
 
 

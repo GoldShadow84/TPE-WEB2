@@ -1,23 +1,57 @@
 <?php
 require_once './app/models/series.model.php';
 require_once './app/views/series.view.php';
+require_once './helpers/auth.helper.php';
 
 
 
 class SeriesController {
     private $model;
     private $view;
+    private $authHelper;
+
 
     public function __construct() {
+        $this->authHelper = new AuthHelper();
+
         $this->model = new SeriesModel();
         $this->view = new SeriesView();
+        
+
     }
+
+
+    //redirecciones
+    public function showHomeLocation() {
+        header("Location: ". BASE_URL."home");
+    }
+
+    public function showSeriesLocation() {
+        header("Location: ". BASE_URL."series");
+    }
+
+    public function showPlatformsLocation() {
+        header("Location: ". BASE_URL."platforms");
+    }
+
+
+
+//funciones ver, filtrar, añadir, eliminar, actualizar
+
+
+
 
     //ver pagina principal
     public function showHome() {
 
-        $this->view->showHome();
+        //si esta logeado se ve logout, si no lo está se ve login en el header
+        $logged = $this->authHelper->checkLoggedIn();
+
+        $this->view->showHome($logged);
     }
+
+
+
 
             //ver todas las series
     public function showAllSeries() {
@@ -26,26 +60,42 @@ class SeriesController {
         $series = $this->model->getAllSeriesWithPlatforms();
         $platforms = $this->model->getAllPlatforms();
 
+        //si esta logeado se ve logout, si no lo está se ve login en el header
+        $logged = $this->authHelper->checkLoggedIn();
 
         //pasamos plataformas/series para poder elegirlas en el formulario de nuevas series
-        $this->view->showAllSeries($series, $platforms);
+        $this->view->showAllSeries($series, $platforms, $logged);
     }
+
+
 
 
         //ver todas las plataformas
     public function showAllPlatforms() {
         $platforms = $this->model->getAllPlatforms();
 
-        $this->view->showAllPlatforms($platforms);
+        //si esta logeado se ve logout, si no lo está se ve login en el header
+        $logged = $this->authHelper->checkLoggedIn();
+
+        $this->view->showAllPlatforms($platforms, $logged);
     }
+
+
 
 
         //select para ver las series filtradas por plataforma
     public function searchByPlatform() {
+        //si esta logeado se ve logout, si no lo está se ve login en el header
+        $logged = $this->authHelper->checkLoggedIn();
+
+
         $platforms = $this->model->getAllPlatforms();
 
-        $this->view->searchByPlatform($platforms);
+        $this->view->searchByPlatform($platforms, $logged);
     }
+
+
+
 
     //ver series con la plataforma elegida con el select
     public function seriesFiltred() {
@@ -53,20 +103,31 @@ class SeriesController {
         if(isset($_POST['choice']) && !empty($_POST['choice'])) {
             $choice = $_POST['choice'];
 
+            //si esta logeado se ve logout, si no lo está se ve login en el header
+            $logged = $this->authHelper->checkLoggedIn();
+
             $list = $this->model->getSeriesByPlatforms($choice);
-            $this->view->showSeriesByPlatform($list);
+            $this->view->showSeriesByPlatform($list, $logged);
         }
     }   
+
+
 
 
         //ver en detalle una serie particular
     public function viewTask($id) {
 
+        $logged = $this->authHelper->checkLoggedIn();
+
+
         $series = $this->model->getSeriesById($id);
    
-       $this->view->viewTask($series);
+       $this->view->viewTask($series, $logged);
 
     }
+
+
+
 
     //añadir nueva serie
 
@@ -79,19 +140,16 @@ class SeriesController {
             
             $this->model->addNewSerie($name, $genre, $choice);
 
-           // header("Location: ver");
-           //     header("Location: " . VER);
-           header("Location: ". BASE_URL);
-            
+           $this->showSeriesLocation();
 
         }   
         else {
             $this->view->showErrorEmptyForm();
         }
-           
-
     
     }
+
+
 
 
     //añadir nueva plataforma
@@ -103,11 +161,8 @@ class SeriesController {
             $price = $_POST['price'];
 
             $this->model->addNewPlatform($company, $price);
- 
-           // header("Location: ver");
-            //header("Location: " . VER);
-            header("Location: ". BASE_URL);
-            
+
+            $this->showPlatformsLocation();
         }
         else {
             $this->view->showErrorEmptyForm();
@@ -115,37 +170,44 @@ class SeriesController {
     }
 
 
+
+
     //borrar una serie
     public function deleteSerie($id) {
 
-
             $this->model->deleteSerie($id);
-             header("Location: ". BASE_URL);
+            
+            $this->showSeriesLocation();
 
-    
     }
+
+
 
 
     //borrar una plataforma (no debe estar vinculada con ninguna serie)
     public function deletePlatform($id) {
 
         $this->model->deletePlatform($id);
-      //  header("Location: ../ver");
-      //  header("Location: " . VER);
-      header("Location: ". BASE_URL);
-
+        
+        $this->showPlatformsLocation();
 
     }
+
+
+
 
 
     //ir al formulario para actualizar una serie
     public function updateSerie($id) {
 
+        $logged = $this->authHelper->checkLoggedIn();
+
         $series = $this->model->getAllSeries();
         $platforms = $this->model->getAllPlatforms();
         
-        $this->view->formUpdateSerie($id, $series, $platforms);
+        $this->view->formUpdateSerie($id, $series, $platforms, $logged);
     }
+
 
 
 
@@ -163,29 +225,31 @@ class SeriesController {
 
             $this->model->updateSerie($id, $name, $genre, $choice);
 
-           // header("Location: ../ver");
-           // header("Location: " . VER);
-           header("Location: ". BASE_URL);
+            $this->showSeriesLocation();
 
         }
         else {
             $this->view->showErrorEmptyForm();
             
         }   
-
-             
+  
     }
+
+
 
 
     //ir al formulario para actualizar una  plataforma
 
     public function updatePlatform($id) {
 
+        $logged = $this->authHelper->checkLoggedIn();
+
         $series = $this->model->getAllSeries();
         $platforms = $this->model->getAllPlatforms();
         
-        $this->view->formUpdatePlatform($id, $series, $platforms);
+        $this->view->formUpdatePlatform($id, $series, $platforms, $logged);
     }
+
 
 
 
@@ -201,21 +265,16 @@ class SeriesController {
 
             $this->model->updatePlatform($id, $company, $price);
  
-            //header("Location: ../ver");
-            //header("Location: " . VER);
-            header("Location: ". BASE_URL);
-            
-    
+            $this->showPlatformsLocation();
+
         }
         else {
             $this->view->showErrorEmptyForm();
 
         }
     }
- 
 
-
- 
+    
 
 
 }
