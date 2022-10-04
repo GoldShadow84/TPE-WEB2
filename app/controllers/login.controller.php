@@ -1,7 +1,7 @@
 <?php
 
 require_once './app/views/login.view.php';
-require_once './app/models/login.model.php';
+require_once './app/models/user.model.php';
 require_once './helpers/auth.helper.php';
 
 class LoginController {
@@ -10,7 +10,7 @@ class LoginController {
     private $authHelper;
 
     public function __construct() {
-        $this->model = new LoginModel();
+        $this->model = new UserModel();
         $this->view = new LoginView();
         $this->authHelper = new AuthHelper();
     }
