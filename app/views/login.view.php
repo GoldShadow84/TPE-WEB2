@@ -13,7 +13,7 @@ class LoginView {
 
     }
 
-
+    //ver seccion login-formulario login
     public function showLogin($logged, $error = null) {
 
         $this->smarty->assign('logged', $logged);

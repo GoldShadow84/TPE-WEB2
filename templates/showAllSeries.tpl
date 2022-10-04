@@ -11,7 +11,7 @@
               {foreach $series as $serie }
 
                   <li class='list-group-item d-flex justify-content-between align-items-center'>
-                    <span> <b><a href="viewTask/{$serie->id_serie}">{$serie->name}</a></b> - {$serie->genre} - (Plataforma: {$serie->companies})</span>
+                    <span> <b><a href="viewSerie/{$serie->id_serie}">{$serie->name}</a></b> - {$serie->genre} - (Plataforma: {$serie->companies})</span>
 
 
                     {if $logged}

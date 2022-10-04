@@ -16,12 +16,10 @@ class SeriesController {
 
         $this->model = new SeriesModel();
         $this->view = new SeriesView();
-        
-
     }
 
 
-    //redirecciones
+      //redirecciones
     public function showHomeLocation() {
         header("Location: ". BASE_URL."home");
     }
@@ -36,12 +34,11 @@ class SeriesController {
 
 
 
-//funciones ver, filtrar, añadir, eliminar, actualizar
+    //funciones ver, filtrar, añadir, eliminar, actualizar
 
 
 
-
-    //ver pagina principal
+      //ver pagina principal
     public function showHome() {
 
         //si esta logeado se ve logout, si no lo está se ve login en el header
@@ -52,8 +49,7 @@ class SeriesController {
 
 
 
-
-            //ver todas las series
+        //ver todas las series
     public function showAllSeries() {
         
         //se traen todas las series junto a la plataforma a la que pertenecen
@@ -114,15 +110,16 @@ class SeriesController {
 
 
 
-        //ver en detalle una serie particular
-    public function viewTask($id) {
+    //ver en detalle una serie particular
+    public function viewSerie($id) {
 
         $logged = $this->authHelper->checkLoggedIn();
 
 
         $series = $this->model->getSeriesById($id);
    
-       $this->view->viewTask($series, $logged);
+
+       $this->view->viewSerie($series, $logged);
 
     }
 
@@ -277,8 +274,5 @@ class SeriesController {
         
         }
     }
-
-    
-
 
 }

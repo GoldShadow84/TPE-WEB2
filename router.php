@@ -54,8 +54,8 @@ switch ($params[0]) {
     case 'filter':
         $serieController->seriesFiltred();
         break;
-    case 'viewTask':
-        $serieController->viewTask($params[1]);
+    case 'viewSerie':
+        $serieController->viewSerie($params[1]);
         break;    
 
         //Casos para Usuarios Logueados

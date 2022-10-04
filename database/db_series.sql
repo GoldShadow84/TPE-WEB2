@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-10-2022 a las 01:39:46
+-- Tiempo de generación: 04-10-2022 a las 21:20:52
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -41,7 +41,7 @@ INSERT INTO `platform` (`id_platform`, `company`, `price`) VALUES
 (1, 'netflix', 800),
 (2, 'hbo', 500),
 (3, 'prime', 500),
-(7, 'disney plus', 1200);
+(7, 'Disney Plus', 1210);
 
 -- --------------------------------------------------------
 
@@ -64,7 +64,10 @@ CREATE TABLE `serie` (
 INSERT INTO `serie` (`id_serie`, `name`, `genre`, `image`, `id_platform_fk`) VALUES
 (3, 'mr.robot', 'drama', '', 3),
 (5, 'hand\'smaid-tail', 'drama', '', 1),
-(6, 'game of thrones', 'drama', '', 2);
+(6, 'game of thrones', 'drama', '', 2),
+(10, 'Loki', 'accion', '', 7),
+(11, 'better call saul', 'drama', '', 1),
+(12, 'breaking bad', 'drama', '', 1);
 
 -- --------------------------------------------------------
 
@@ -77,6 +80,14 @@ CREATE TABLE `users` (
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id_users`, `email`, `password`) VALUES
+(1, 'javierse9@gmail.com', '$2y$10$DKyMugeMtJ9gdaKw3U6U8uWoL1WHuDp/6/TQxOqgeKz0ZYgnVb6c.'),
+(2, 'javierondicol84@gmail.com', '$2y$10$M2STCmVS0sGpkirKuJLrb.be8CMUOJ31QJvmLSNUSWEa973e0vMlm');
 
 --
 -- Índices para tablas volcadas
@@ -109,19 +120,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `platform`
 --
 ALTER TABLE `platform`
-  MODIFY `id_platform` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_platform` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `serie`
 --
 ALTER TABLE `serie`
-  MODIFY `id_serie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_serie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas

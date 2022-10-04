@@ -15,6 +15,8 @@ class LoginController {
         $this->authHelper = new AuthHelper();
     }
 
+
+    //mostrar formulario login
     public function showLogin() {
 
         //si esta logeado se ve login en el head, si no lo está, se ve logout.
@@ -23,6 +25,8 @@ class LoginController {
 
     }
 
+
+    //verificar si el usuario está logueado
     public function verifyLogin() {
 
             $email = $_POST['email'];
@@ -38,28 +42,25 @@ class LoginController {
                 $this->showHomeLocation();
     
                 
-            } else {
+            } 
+            else {
                 $this->view->showLogin("Login incorrecto");
             }
             
         }
 
-        public function logout() {
-            $this->authHelper->logout();
-            header('Location: ' . LOGIN);
-        }    
+
+    //desloguear/salir de la sesion
+    public function logout() {
+        $this->authHelper->logout();
+        header('Location: ' . LOGIN);
+    }    
 
 
-        public function showHomeLocation() {
-            header("Location: ". BASE_URL."home");
-        }
-    
-            
-  
-
-    
-
-
+    //redirigir a home
+    public function showHomeLocation() {
+        header("Location: ". BASE_URL."home");
+    }
     
 
 } 
