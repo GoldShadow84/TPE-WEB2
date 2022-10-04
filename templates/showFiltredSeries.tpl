@@ -1,29 +1,29 @@
 
-    {include 'templates\header.tpl'}
+  {include 'templates\header.tpl'}
 
 
-    <div class="container">
+      <div class="container">
 
-      <h1>{$titulo}</h1>
+         <h1>{$titulo}</h1>
 
-      <ul class="list-group">
-      
-           {foreach $series as $serie }
+          <ul class="list-group">
+          
+              {foreach $series as $serie }
 
-                <li class='list-group-item d-flex justify-content-between align-items-center'>
-                  <span> <b>{$serie->name}</b> - <b> {$serie->genre}</b> </span>
-                </li>
+                    <li class='list-group-item d-flex justify-content-between align-items-center'>
+                      <span> <b>{$serie->name}</b> - <b> {$serie->genre}</b> </span>
+                    </li>
 
-            {/foreach}
+                {/foreach}
 
-      </ul>
+          </ul>
 
-      <a href="search">Buscar otra vez</a>
+          <a href="search">Buscar otra vez</a>
 
 
-    </div>  
+      </div>  
     
 
-      {include 'templates\footer.tpl'}
+  {include 'templates\footer.tpl'}
 
 

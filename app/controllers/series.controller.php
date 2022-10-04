@@ -144,7 +144,8 @@ class SeriesController {
 
         }   
         else {
-            $this->view->showErrorEmptyForm();
+            $logged = $this->authHelper->checkLoggedIn();
+            $this->view->showErrorEmptyForm($logged);
         }
     
     }
@@ -165,7 +166,8 @@ class SeriesController {
             $this->showPlatformsLocation();
         }
         else {
-            $this->view->showErrorEmptyForm();
+            $logged = $this->authHelper->checkLoggedIn();
+            $this->view->showErrorEmptyForm($logged);
         }
     }
 
@@ -229,8 +231,8 @@ class SeriesController {
 
         }
         else {
-            $this->view->showErrorEmptyForm();
-            
+             $logged = $this->authHelper->checkLoggedIn();
+            $this->view->showErrorEmptyForm($logged);
         }   
   
     }
@@ -269,8 +271,10 @@ class SeriesController {
 
         }
         else {
-            $this->view->showErrorEmptyForm();
 
+        $logged = $this->authHelper->checkLoggedIn();
+        $this->view->showErrorEmptyForm($logged);
+        
         }
     }
 

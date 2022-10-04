@@ -14,6 +14,7 @@ class SeriesView {
 
 
     }
+    
 
     function showHome($logged) { 
         
@@ -101,7 +102,10 @@ class SeriesView {
        $this->smarty->display('templates/updatePlatform.tpl');
     }
 
-    function showErrorEmptyForm() {
+    function showErrorEmptyForm($logged) {
+
+        $this->smarty->assign('logged', $logged);
+
         $this->smarty->assign('error', 'Datos vacios!');
         $this->smarty->display('templates/emptyError.tpl');
 

@@ -1,12 +1,9 @@
 
 
         <footer>
-            <div class="copyright">
-                <p>@Copyright 2022 - Series-Plataformas - Todos los Derechos Reservados</p>
-            </div>
-            </div>
+     
         </footer>
-    </div>
+    
     
 
     <script src="JS/main.js"></script>

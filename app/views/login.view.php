@@ -14,7 +14,6 @@ class LoginView {
     }
 
 
-
     public function showLogin($logged, $error = null) {
 
         $this->smarty->assign('logged', $logged);
@@ -23,10 +22,6 @@ class LoginView {
         $this->smarty->assign('error', $error);
         $this->smarty->display('templates/loginForm.tpl');
     }
-
-
-
-
 
 
 
