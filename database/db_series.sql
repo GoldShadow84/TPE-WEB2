@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-10-2022 a las 00:36:40
+-- Tiempo de generación: 06-10-2022 a las 20:41:59
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -41,8 +41,7 @@ INSERT INTO `platform` (`id_platform`, `company`, `price`) VALUES
 (1, 'netflix', 800),
 (2, 'hbo', 500),
 (3, 'Prime', 400),
-(7, 'Disney Plus', 1210),
-(14, 'fdsfsd', 434);
+(7, 'Disney Plus', 1210);
 
 -- --------------------------------------------------------
 
@@ -54,7 +53,7 @@ CREATE TABLE `serie` (
   `id_serie` int(11) NOT NULL,
   `name` varchar(45) NOT NULL,
   `genre` varchar(45) NOT NULL,
-  `image` varchar(100) NOT NULL,
+  `image` varchar(100) DEFAULT NULL,
   `id_platform_fk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -63,12 +62,8 @@ CREATE TABLE `serie` (
 --
 
 INSERT INTO `serie` (`id_serie`, `name`, `genre`, `image`, `id_platform_fk`) VALUES
-(5, 'hand\'smaid-tail', 'drama', '', 1),
-(6, 'game of thrones', 'drama', '', 2),
-(11, 'better call saul', 'drama', '', 1),
-(12, 'breaking bad', 'drama', '', 1),
-(15, 'Mr.Robot', 'drama', '', 3),
-(16, 'Loki', 'drama', '', 7);
+(11, 'Better Call Saul', 'drama', 'img/task633f2029073d1.jpg', 1),
+(14, 'Breaking Bad', 'drama', 'img/series633f20fbc2679.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -121,13 +116,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `platform`
 --
 ALTER TABLE `platform`
-  MODIFY `id_platform` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_platform` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `serie`
 --
 ALTER TABLE `serie`
-  MODIFY `id_serie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_serie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `users`

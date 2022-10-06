@@ -27,17 +27,14 @@ class AuthHelper {
         if (!isset($_SESSION['ID_USER'])) {
             $logged = false;
         }
+        else if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 600)) {  
+            $this->logout(); // cierra la sesión tras 10 minutos.
+        } 
         else {
             $logged = true;
-           /* //desloguear con timeout tras 10 minutos
-            if(time() - $_SESSION['LAST_ACTIVITY'] > 10) {
-                header("Location: ". BASE_URL."logout");
-
-                die();
-            }
-            $_SESSION['LAST_ACTIVITY'] = time(); 
-        */
-        }       
+        } 
+        
+        $_SESSION['LAST_ACTIVITY'] = time();
 
         return $logged;
     }
