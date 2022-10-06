@@ -19,6 +19,10 @@
             {/if}
                   </li> 
 
+            <!-- {if $confirm == false}
+              <p>No se puede borrar, está en uso</p>
+            {/if}      -->
+
             {/foreach}
 
       </ul>

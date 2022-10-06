@@ -4,7 +4,7 @@
 
         <h1>Añadir</h1>
 
-        <form action="addSerie" method="POST">
+        <form action="addSerie" method="POST" enctype="multipart/form-data">
 
             <h2>Ingrese los datos</h2>
 
@@ -16,9 +16,8 @@
 
                     <input name="genre" type="text" placeholder="Genero de la Serie"></input>
 
+                            <label>Selecciona una Plataforma</label>
                         <select name="choice" class="form-selected">
-                            <option selected>Selecciona una Plataforma</option>
-                        
                                                     
                             {foreach $platforms as $platform }
                             <option value="{$platform->id_platform}">{$platform->id_platform}({$platform->company})</option>
@@ -27,7 +26,7 @@
 
                         </select>
 
-                    <input name="image" type="file" placeholder="Archivo Imagen-Serie"></input>
+                    <input name="input_name" id="imageToUpload" type="file" placeholder="Archivo Imagen-Serie"></input>
 
 
                 </div>

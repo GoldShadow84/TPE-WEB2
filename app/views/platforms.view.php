@@ -76,4 +76,13 @@ class PlatformsView {
         $this->smarty->display('templates/emptyError.tpl');
 
     }
+
+    function showDeleteError($logged) {
+        $this->smarty->assign('logged', $logged);
+
+        $this->smarty->assign('error', 'No se puede borrar esa plataforma, se encuentra en uso.');
+        $this->smarty->display('templates/deleteError.tpl');
+
+    }
+
  } 

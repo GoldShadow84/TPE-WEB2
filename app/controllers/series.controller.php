@@ -78,12 +78,22 @@ class SeriesController {
     //añadir nueva serie
     public function addNewSerie() {
 
-        if(isset($_POST['name']) && !empty($_POST['name'])&&isset($_POST['genre']) && !empty($_POST['genre'])&&isset($_POST['choice']) && !empty($_POST['choice'])) {   
+        if(isset($_POST['name']) && !empty($_POST['name'])&&isset($_POST['genre']) && !empty($_POST['genre'])&&isset($_POST['choice']) && !empty($_POST['choice']) ) {   
             $name = $_POST['name'];
             $genre = $_POST['genre'];
             $choice = $_POST['choice'];
-            
-            $this->model->addNewSerie($name, $genre, $choice);
+
+            $agregar = true;
+
+           if($agregar) {
+                if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png") {
+                    $this->model->addNewSerie($name, $genre, $choice, $_FILES['input_name']);       
+                }
+                else {
+                    $this->model->addNewSerie($name, $genre, $choice);       
+                }
+            }
+              
 
            $this->showSeriesLocation();
 
@@ -125,7 +135,16 @@ class SeriesController {
             $genre = $_POST['genre'];
             $choice = $_POST['choice'];
 
-            $this->model->updateSerie($id, $name, $genre, $choice);
+            $agregar = true;
+
+           if($agregar) {
+            if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png") {
+                $this->model->updateSerie($id, $name, $genre, $choice, $_FILES['input_name']);       
+            }
+            else {
+                $this->model->updateSerie($id, $name, $genre, $choice);       
+            }
+        }
 
             $this->showSeriesLocation();
 

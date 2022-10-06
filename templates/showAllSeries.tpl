@@ -18,8 +18,8 @@
                     <a href='deleteSerie/{$serie->id_serie}' type='button' class='btn btn-danger ml-auto'>Borrar</a>
                     <a href='updateSerie/{$serie->id_serie}' type='button' class='btn btn-danger ml-auto'>Actualizar</a>
                     {/if}
-                                
 
+                                
                   </li>
 
               {/foreach}

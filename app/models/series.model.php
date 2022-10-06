@@ -41,13 +41,27 @@ class SeriesModel {
     }
 
     //añadir una nueva serie
-    public function addNewSerie($name, $genre, $choice) {
+    public function addNewSerie($name, $genre, $choice, $imagen = null) {
 
-        $query = $this->db->prepare('INSERT INTO serie (name, genre, id_platform_fk) VALUES(?,?,?)');
+        $pathImg = null;
 
-        $query->execute([$name, $genre, $choice]);
+        if($imagen) 
+            $pathImg = $this->uploadImageSerie($imagen);
+        
+
+        $query = $this->db->prepare('INSERT INTO serie (name, genre, id_platform_fk, image) VALUES(?,?,?,?)');
+        
+        $query->execute([$name, $genre, $choice, $pathImg]);
+        
+
     }
 
+    private function uploadImageSerie($imagen) {
+        $target = "img/series" . uniqid() . "." . strtolower(pathinfo($imagen['name'], PATHINFO_EXTENSION));  
+        move_uploaded_file($imagen['tmp_name'], $target);
+        return $target;
+    }
+ 
     //borrar una serie segun su id
     public function deleteSerie($id) {
    
@@ -57,11 +71,16 @@ class SeriesModel {
     }
 
     //actualizar una serie segun su id
-    public function updateSerie($id, $name, $genre, $choice) {
+    public function updateSerie($id, $name, $genre, $choice, $imagen = null) {
 
-        $query = $this->db->prepare('UPDATE serie SET name = ?, genre = ?, id_platform_fk = ? WHERE id_serie = ?');
+        $pathImg = null;
 
-        $query->execute([$name, $genre, $choice, $id]);
+        if($imagen) 
+        $pathImg = $this->uploadImageSerie($imagen);
+
+        $query = $this->db->prepare('UPDATE serie SET name = ?, genre = ?, image = ?, id_platform_fk = ? WHERE id_serie = ?');
+
+        $query->execute([$name, $genre, $pathImg, $choice, $id]);
     }
 
 } 

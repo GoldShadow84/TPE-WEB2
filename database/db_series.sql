@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-10-2022 a las 21:20:52
+-- Tiempo de generación: 05-10-2022 a las 00:36:40
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -40,8 +40,9 @@ CREATE TABLE `platform` (
 INSERT INTO `platform` (`id_platform`, `company`, `price`) VALUES
 (1, 'netflix', 800),
 (2, 'hbo', 500),
-(3, 'prime', 500),
-(7, 'Disney Plus', 1210);
+(3, 'Prime', 400),
+(7, 'Disney Plus', 1210),
+(14, 'fdsfsd', 434);
 
 -- --------------------------------------------------------
 
@@ -62,12 +63,12 @@ CREATE TABLE `serie` (
 --
 
 INSERT INTO `serie` (`id_serie`, `name`, `genre`, `image`, `id_platform_fk`) VALUES
-(3, 'mr.robot', 'drama', '', 3),
 (5, 'hand\'smaid-tail', 'drama', '', 1),
 (6, 'game of thrones', 'drama', '', 2),
-(10, 'Loki', 'accion', '', 7),
 (11, 'better call saul', 'drama', '', 1),
-(12, 'breaking bad', 'drama', '', 1);
+(12, 'breaking bad', 'drama', '', 1),
+(15, 'Mr.Robot', 'drama', '', 3),
+(16, 'Loki', 'drama', '', 7);
 
 -- --------------------------------------------------------
 
@@ -120,13 +121,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `platform`
 --
 ALTER TABLE `platform`
-  MODIFY `id_platform` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_platform` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `serie`
 --
 ALTER TABLE `serie`
-  MODIFY `id_serie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_serie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `users`

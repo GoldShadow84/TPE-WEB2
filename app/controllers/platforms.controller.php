@@ -53,6 +53,7 @@ class PlatformsController {
     //si esta logeado se ve logout, si no lo está se ve login en el header
         $logged = $this->authHelper->checkLoggedIn();
 
+
         $this->view->showAllPlatforms($platforms, $logged);
     }
 
@@ -101,9 +102,17 @@ class PlatformsController {
     //borrar una plataforma (no debe estar vinculada con ninguna serie)
     public function deletePlatform($id) {
 
-        $this->model->deletePlatform($id);
+        $confirm = $this->model->deletePlatform($id);
+
+        if($confirm == true) {
+            $this->showPlatformsLocation(); 
+         }
+         else if($confirm == false) {
+            $logged = $this->authHelper->checkLoggedIn();
+            $this->view->showDeleteError($logged);
+         }
         
-        $this->showPlatformsLocation();
+        
 
     }
 

@@ -10,7 +10,8 @@
       
               {foreach $series as $serie }
             
-
+                  <a href="series">Volver a Elegir</a>
+                  
                 <li class='list-group-item d-flex justify-content-between align-items-center'>
 
                   <p>Nombre de la Serie: {$serie->name}</p>
@@ -23,7 +24,8 @@
 
                 </li>
 
-                  <a href="series">Volver a Elegir</a>
+               <img class="img-thumbnail" src="{$serie->image}"/>         
+
 
               {/foreach}  
                 
