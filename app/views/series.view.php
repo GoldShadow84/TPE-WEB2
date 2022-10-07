@@ -41,7 +41,6 @@ class SeriesView {
 
         $this->smarty->assign('logged', $logged);
 
-
         $this->smarty->assign('series', $series);
 
         $this->smarty->display('templates/showSerieInfo.tpl');
@@ -51,9 +50,8 @@ class SeriesView {
     function formUpdateSerie($id, $series, $platforms, $logged) {
 
         $this->smarty->assign('logged', $logged);
-
         $this->smarty->assign('id', $id);
-           $this->smarty->assign('series', $series);
+        $this->smarty->assign('series', $series);
         $this->smarty->assign('platforms', $platforms);
 
 

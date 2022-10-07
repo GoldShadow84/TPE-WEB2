@@ -30,7 +30,11 @@ class AuthHelper {
             header('Location: ' . LOGIN);
             die();
         }
+        else {
+            $logged = true;
+        }
         
+        $logged;
     }
 
     //Cambia lo que ve el user y el admin, y hace timeout.

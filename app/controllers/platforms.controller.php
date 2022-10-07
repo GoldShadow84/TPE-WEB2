@@ -124,9 +124,7 @@ class PlatformsController {
 
     public function updatePlatform($id) {
 
-        $this->authHelper->checkLoggedIn();
-
-        $logged = $this->authHelper->isLogged();
+        $logged = $this->authHelper->checkLoggedIn();
 
         $series = $this->seriesModel->getAllSeries();
         $platforms = $this->model->getAllPlatforms();
@@ -136,8 +134,6 @@ class PlatformsController {
 
     //realizamos el update sql en la base de datos
     public function confirmUpdatePlatform() {
-
-        $this->authHelper->checkLoggedIn();
         
         if(isset($_POST['id']) && !empty($_POST['id'])&&isset($_POST['company']) && !empty($_POST['company'])&&isset($_POST['price']) && !empty($_POST['price'])) {
 

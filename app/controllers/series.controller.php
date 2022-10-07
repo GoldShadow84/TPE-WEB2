@@ -122,9 +122,7 @@ class SeriesController {
     //ir al formulario para actualizar una serie
     public function updateSerie($id) {
 
-        $this->authHelper->checkLoggedIn();
-
-        $logged = $this->authHelper->isLogged();
+        $logged = $this->authHelper->checkLoggedIn();
 
         $series = $this->model->getAllSeries();
         $platforms = $this->platforms->getAllPlatforms();
@@ -134,8 +132,6 @@ class SeriesController {
 
     //realizamos el update sql en la base de datos
     public function confirmUpdateSerie() {
-
-        $this->authHelper->checkLoggedIn();
 
         if(isset($_POST['id']) && !empty($_POST['id'])&&isset($_POST['name']) && !empty($_POST['name'])&&isset($_POST['genre']) && !empty($_POST['genre'])&&isset($_POST['choice']) && !empty($_POST['choice'])) {
 
