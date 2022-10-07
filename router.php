@@ -23,70 +23,79 @@ if(!empty($_GET['action'])) {
 $params = explode('/', $action);
 
 
-// instancio ambos controladores
-$serieController = new SeriesController();
-$platformsController = new PlatformsController();
-$loginController = new LoginController();
-
-
 
 // tabla de ruteo
 
 switch ($params[0]) {
-   
-    case 'home':
-        $serieController->showHome();
-        break;
-    case 'series':
-        $serieController->showAllSeries();
-        break;
-    case 'platforms':
-        $platformsController->showAllPlatforms();
-        break;   
-    case 'search':
-        $platformsController->searchByPlatform();
-        break;       
-    case 'filter':
-        $platformsController->seriesFiltred();
-        break;
-    case 'viewSerie':
-        $serieController->viewSerie($params[1]);
-        break;    
-        //Casos para Usuarios Logueados
     case 'login':
+        $loginController = new LoginController();
         $loginController->showLogin();
         break;
     case 'verify':
+        $loginController = new LoginController();
         $loginController->verifyLogin();
         break;
     case 'logout':
+        $loginController = new LoginController();
         $loginController->logout();   
+        break;  
+    case 'home':
+        $serieController = new SeriesController();
+        $serieController->showHome();
+        break;
+    case 'series':
+        $serieController = new SeriesController();
+        $serieController->showAllSeries();
+        break;
+    case 'platforms':
+        $platformsController = new PlatformsController();
+        $platformsController->showAllPlatforms();
         break;   
+    case 'search':
+        $platformsController = new PlatformsController();
+        $platformsController->searchByPlatform();
+        break;       
+    case 'filter':
+        $platformsController = new PlatformsController();
+        $platformsController->seriesFiltred();
+        break;
+    case 'viewSerie':
+        $serieController = new SeriesController();
+        $serieController->viewSerie($params[1]);
+        break;     
     case 'addSerie':
+        $serieController = new SeriesController();
         $serieController->addNewSerie();
         break;
     case 'addPlatform':
+        $platformsController = new PlatformsController();
         $platformsController->addNewPlatform();
         break;      
     case 'updateSerie':
+        $serieController = new SeriesController();
         $id = $params[1];
-       $serieController->updateSerie($id);   
+        $serieController->updateSerie($id);   
         break;
     case 'confirmUpdSerie':
+       $serieController = new SeriesController();
        $serieController->confirmUpdateSerie();  
         break;
     case 'updatePlatform':
+        $platformsController = new PlatformsController();
         $id = $params[1];
         $platformsController->updatePlatform($id);   
         break;
     case 'confirmUpdPlatform':
+        $platformsController = new PlatformsController();
         $platformsController->confirmUpdatePlatform();  
         break;
     case 'deleteSerie':
+        $serieController = new SeriesController();
         $id = $params[1];
         $serieController->deleteSerie($id);
         break;
     case 'deletePlatform':
+        $platformsController = new PlatformsController();
         $id = $params[1];
         $platformsController->deletePlatform($id);
         break;  

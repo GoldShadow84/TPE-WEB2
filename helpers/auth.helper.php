@@ -14,6 +14,7 @@ class AuthHelper {
         session_start();
         $_SESSION['ID_USER'] = $user->id_users;
         $_SESSION['USERNAME'] = $user->email;
+        $_SESSION['isLogged'] = true;
 
     }
 
@@ -22,9 +23,20 @@ class AuthHelper {
         session_destroy();
     }
 
+    //redirige al usuario no logeado para evitar que haga cambios.
     public function checkLoggedIn() {
        session_start();
         if (!isset($_SESSION['ID_USER'])) {
+            header('Location: ' . LOGIN);
+            die();
+        }
+        
+    }
+
+    //Cambia lo que ve el user y el admin, y hace timeout.
+    public function isLogged() { 
+        session_start();
+        if(!isset($_SESSION['isLogged'])) {
             $logged = false;
         }
         else if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 600)) {  
@@ -32,11 +44,12 @@ class AuthHelper {
         } 
         else {
             $logged = true;
-        } 
-        
-        $_SESSION['LAST_ACTIVITY'] = time();
+        }
+
+        $_SESSION['LAST_ACTIVITY'] = time();        $_SESSION['LAST_ACTIVITY'] = time();
 
         return $logged;
     }
+    
 
  }    

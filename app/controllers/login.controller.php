@@ -19,7 +19,7 @@ class LoginController {
     public function showLogin() {
 
         //si esta logeado se ve login en el head, si no lo está, se ve logout.
-        $logged = $this->authHelper->checkLoggedIn();
+        $logged = $this->authHelper->isLogged();
         $this->view->showLogin($logged);
 
     }

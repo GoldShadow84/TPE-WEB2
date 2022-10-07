@@ -43,9 +43,10 @@ class SeriesController {
     public function showHome() {
 
         //si esta logeado se ve logout, si no lo está se ve login en el header
-        $logged = $this->authHelper->checkLoggedIn();
+        $logged = $this->authHelper->isLogged();
 
         $this->view->showHome($logged);
+        var_dump($logged);
     }
 
         //ver todas las series
@@ -56,7 +57,7 @@ class SeriesController {
         $platforms = $this->platforms->getAllPlatforms();
 
         //si esta logeado se ve logout, si no lo está se ve login en el header
-        $logged = $this->authHelper->checkLoggedIn();
+        $logged = $this->authHelper->isLogged();
 
         //pasamos plataformas/series para poder elegirlas en el formulario de nuevas series
         $this->view->showAllSeries($series, $platforms, $logged);
@@ -65,7 +66,7 @@ class SeriesController {
     //ver en detalle una serie particular
     public function viewSerie($id) {
 
-        $logged = $this->authHelper->checkLoggedIn();
+        $logged = $this->authHelper->isLogged();
 
 
         $series = $this->model->getSeriesById($id);
@@ -77,6 +78,8 @@ class SeriesController {
 
     //añadir nueva serie
     public function addNewSerie() {
+
+        $this->authHelper->checkLoggedIn();
 
         if(isset($_POST['name']) && !empty($_POST['name'])&&isset($_POST['genre']) && !empty($_POST['genre'])&&isset($_POST['choice']) && !empty($_POST['choice']) ) {   
             $name = $_POST['name'];
@@ -99,7 +102,7 @@ class SeriesController {
 
         }   
         else {
-            $logged = $this->authHelper->checkLoggedIn();
+            $logged = $this->authHelper->isLogged();
             $this->view->showErrorEmptyForm($logged);
         }
     
@@ -107,6 +110,8 @@ class SeriesController {
 
     //borrar una serie
     public function deleteSerie($id) {
+
+        $this->authHelper->checkLoggedIn();
 
             $this->model->deleteSerie($id);
             
@@ -117,7 +122,9 @@ class SeriesController {
     //ir al formulario para actualizar una serie
     public function updateSerie($id) {
 
-        $logged = $this->authHelper->checkLoggedIn();
+        $this->authHelper->checkLoggedIn();
+
+        $logged = $this->authHelper->isLogged();
 
         $series = $this->model->getAllSeries();
         $platforms = $this->platforms->getAllPlatforms();
@@ -127,6 +134,8 @@ class SeriesController {
 
     //realizamos el update sql en la base de datos
     public function confirmUpdateSerie() {
+
+        $this->authHelper->checkLoggedIn();
 
         if(isset($_POST['id']) && !empty($_POST['id'])&&isset($_POST['name']) && !empty($_POST['name'])&&isset($_POST['genre']) && !empty($_POST['genre'])&&isset($_POST['choice']) && !empty($_POST['choice'])) {
 
@@ -150,7 +159,7 @@ class SeriesController {
 
         }
         else {
-             $logged = $this->authHelper->checkLoggedIn();
+             $logged = $this->authHelper->isLogged();
             $this->view->showErrorEmptyForm($logged);
         }   
   

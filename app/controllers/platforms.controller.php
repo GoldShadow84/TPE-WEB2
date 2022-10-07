@@ -41,7 +41,7 @@ class PlatformsController {
       public function showHome() {
 
     //si esta logeado se ve logout, si no lo está se ve login en el header
-        $logged = $this->authHelper->checkLoggedIn();
+        $logged = $this->authHelper->isLogged();
 
         $this->view->showHome($logged);
     }
@@ -51,7 +51,7 @@ class PlatformsController {
         $platforms = $this->model->getAllPlatforms();
 
     //si esta logeado se ve logout, si no lo está se ve login en el header
-        $logged = $this->authHelper->checkLoggedIn();
+        $logged = $this->authHelper->isLogged();
 
 
         $this->view->showAllPlatforms($platforms, $logged);
@@ -60,7 +60,7 @@ class PlatformsController {
     //select para ver las series filtradas por plataforma
     public function searchByPlatform() {
         //si esta logeado se ve logout, si no lo está se ve login en el header
-        $logged = $this->authHelper->checkLoggedIn();
+        $logged = $this->authHelper->isLogged();
 
 
         $platforms = $this->model->getAllPlatforms();
@@ -75,7 +75,7 @@ class PlatformsController {
             $choice = $_POST['choice'];
 
             //si esta logeado se ve logout, si no lo está se ve login en el header
-            $logged = $this->authHelper->checkLoggedIn();
+            $logged = $this->authHelper->isLogged();
 
             $list = $this->model->getSeriesByPlatforms($choice);
             $this->view->showSeriesByPlatform($list, $logged);
@@ -84,6 +84,8 @@ class PlatformsController {
 
     //añadir nueva plataforma
     public function addNewPlatform() {
+
+        $this->authHelper->checkLoggedIn();
 
         if(isset($_POST['company']) && !empty($_POST['company'])&&isset($_POST['price'])) {
             $company = $_POST['company'];
@@ -94,7 +96,7 @@ class PlatformsController {
             $this->showPlatformsLocation();
         }
         else {
-            $logged = $this->authHelper->checkLoggedIn();
+            $logged = $this->authHelper->isLogged();
             $this->view->showErrorEmptyForm($logged);
         }
     }
@@ -102,13 +104,15 @@ class PlatformsController {
     //borrar una plataforma (no debe estar vinculada con ninguna serie)
     public function deletePlatform($id) {
 
+        $this->authHelper->checkLoggedIn();
+
         $confirm = $this->model->deletePlatform($id);
 
         if($confirm == true) {
             $this->showPlatformsLocation(); 
          }
          else if($confirm == false) {
-            $logged = $this->authHelper->checkLoggedIn();
+            $logged = $this->authHelper->isLogged();
             $this->view->showDeleteError($logged);
          }
         
@@ -120,7 +124,9 @@ class PlatformsController {
 
     public function updatePlatform($id) {
 
-        $logged = $this->authHelper->checkLoggedIn();
+        $this->authHelper->checkLoggedIn();
+
+        $logged = $this->authHelper->isLogged();
 
         $series = $this->seriesModel->getAllSeries();
         $platforms = $this->model->getAllPlatforms();
@@ -131,6 +137,7 @@ class PlatformsController {
     //realizamos el update sql en la base de datos
     public function confirmUpdatePlatform() {
 
+        $this->authHelper->checkLoggedIn();
         
         if(isset($_POST['id']) && !empty($_POST['id'])&&isset($_POST['company']) && !empty($_POST['company'])&&isset($_POST['price']) && !empty($_POST['price'])) {
 
@@ -146,7 +153,7 @@ class PlatformsController {
         }
         else {
 
-        $logged = $this->authHelper->checkLoggedIn();
+        $logged = $this->authHelper->isLogged();
         $this->view->showErrorEmptyForm($logged);
         
         }
