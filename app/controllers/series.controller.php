@@ -46,7 +46,6 @@ class SeriesController {
         $logged = $this->authHelper->isLogged();
 
         $this->view->showHome($logged);
-        var_dump($logged);
     }
 
         //ver todas las series
@@ -79,7 +78,7 @@ class SeriesController {
     //añadir nueva serie
     public function addNewSerie() {
 
-        $this->authHelper->checkLoggedIn();
+        $logged = $this->authHelper->checkLoggedIn();
 
         if(isset($_POST['name']) && !empty($_POST['name'])&&isset($_POST['genre']) && !empty($_POST['genre'])&&isset($_POST['choice']) && !empty($_POST['choice']) ) {   
             $name = $_POST['name'];
@@ -102,7 +101,6 @@ class SeriesController {
 
         }   
         else {
-            $logged = $this->authHelper->isLogged();
             $this->view->showErrorEmptyForm($logged);
         }
     

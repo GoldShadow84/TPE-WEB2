@@ -37,10 +37,10 @@ class PlatformsController {
 
      //funciones ver, filtrar, añadir, eliminar, actualizar
 
-      //ver pagina principal
+     //ver pagina principal
       public function showHome() {
 
-    //si esta logeado se ve logout, si no lo está se ve login en el header
+     //si esta logeado se ve logout, si no lo está se ve login en el header
         $logged = $this->authHelper->isLogged();
 
         $this->view->showHome($logged);
@@ -50,7 +50,7 @@ class PlatformsController {
     public function showAllPlatforms() {
         $platforms = $this->model->getAllPlatforms();
 
-    //si esta logeado se ve logout, si no lo está se ve login en el header
+     //si esta logeado se ve logout, si no lo está se ve login en el header
         $logged = $this->authHelper->isLogged();
 
 
@@ -61,7 +61,6 @@ class PlatformsController {
     public function searchByPlatform() {
         //si esta logeado se ve logout, si no lo está se ve login en el header
         $logged = $this->authHelper->isLogged();
-
 
         $platforms = $this->model->getAllPlatforms();
 
@@ -78,6 +77,7 @@ class PlatformsController {
             $logged = $this->authHelper->isLogged();
 
             $list = $this->model->getSeriesByPlatforms($choice);
+
             $this->view->showSeriesByPlatform($list, $logged);
         }
     }   
@@ -85,7 +85,7 @@ class PlatformsController {
     //añadir nueva plataforma
     public function addNewPlatform() {
 
-        $this->authHelper->checkLoggedIn();
+        $logged = $this->authHelper->checkLoggedIn();
 
         if(isset($_POST['company']) && !empty($_POST['company'])&&isset($_POST['price'])) {
             $company = $_POST['company'];
@@ -96,7 +96,6 @@ class PlatformsController {
             $this->showPlatformsLocation();
         }
         else {
-            $logged = $this->authHelper->isLogged();
             $this->view->showErrorEmptyForm($logged);
         }
     }
@@ -116,8 +115,6 @@ class PlatformsController {
             $this->view->showDeleteError($logged);
          }
         
-        
-
     }
 
     //ir al formulario para actualizar una  plataforma
@@ -127,6 +124,7 @@ class PlatformsController {
         $logged = $this->authHelper->checkLoggedIn();
 
         $series = $this->seriesModel->getAllSeries();
+
         $platforms = $this->model->getAllPlatforms();
         
         $this->view->formUpdatePlatform($id, $series, $platforms, $logged);
