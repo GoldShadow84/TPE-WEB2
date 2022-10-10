@@ -1,5 +1,7 @@
 /*  opciones universales, padding , margin reseteados y el border box para que los contenedores respeten su altura */
 
+/* CSS TPE WEB1 */
+
 * {
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding: 0;

@@ -15,7 +15,6 @@ class AuthHelper {
         $_SESSION['ID_USER'] = $user->id_users;
         $_SESSION['USERNAME'] = $user->email;
         $_SESSION['isLogged'] = true;
-
     }
 
     public function logout() {

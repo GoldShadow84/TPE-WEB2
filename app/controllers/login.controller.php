@@ -21,31 +21,25 @@ class LoginController {
         //si esta logeado se ve login en el head, si no lo está, se ve logout.
         $logged = $this->authHelper->isLogged();
         $this->view->showLogin($logged);
-
     }
 
     //verificar si el usuario está logueado
     public function verifyLogin() {
 
-            $email = $_POST['email'];
-            $password = $_POST['password'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
 
-    
-            $user = $this->model->getByEmail($email);
+        $user = $this->model->getByEmail($email);
 
-            if (!empty($user) && password_verify($password, $user->password)) {
+        if (!empty($user) && password_verify($password, $user->password)) {
 
-
-                $this->authHelper->login($user);
-                $this->showHomeLocation();
-    
-                
-            } 
-            else {
-                $this->view->showLogin("Login incorrecto");
-            }
-            
-        }
+            $this->authHelper->login($user);
+            $this->showHomeLocation();
+        } 
+        else {
+            $this->view->showLogin("Login incorrecto");
+        } 
+    }
 
     //desloguear/salir de la sesion
     public function logout() {

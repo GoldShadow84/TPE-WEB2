@@ -52,8 +52,6 @@ class SeriesModel {
         $query = $this->db->prepare('INSERT INTO serie (name, genre, id_platform_fk, image) VALUES(?,?,?,?)');
         
         $query->execute([$name, $genre, $choice, $pathImg]);
-        
-
     }
 
     private function uploadImageSerie($imagen) {
@@ -67,7 +65,6 @@ class SeriesModel {
    
             $query = $this->db->prepare("DELETE FROM serie WHERE id_serie = ?");
             $query->execute([$id]);
-     
     }
 
     //actualizar una serie segun su id

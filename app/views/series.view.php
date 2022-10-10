@@ -9,7 +9,6 @@ class SeriesView {
         
         $this->smarty = new Smarty();
         $this->smarty->assign('basehref', BASE_URL);
-
     }
 
     //Ver home
@@ -17,32 +16,24 @@ class SeriesView {
         
         //colocar en el header login o logout segun si se esta logeado o no.
         $this->smarty->assign('logged', $logged);
-
         $this->smarty->display('templates/home.tpl');   
-
     }
 
     //mostrar lista series con plataformas entre parentesis
     function showAllSeries($series, $platforms, $logged) {
 
-        
         $this->smarty->assign('titulo', 'Lista de Series');
         $this->smarty->assign('series', $series);
         $this->smarty->assign('platforms', $platforms);
         $this->smarty->assign('logged', $logged);
-
-        
        $this->smarty->display('templates/showAllSeries.tpl');
-        
     }
 
     //ver una serie en concreto
     function viewSerie($series, $logged) {
 
         $this->smarty->assign('logged', $logged);
-
         $this->smarty->assign('series', $series);
-
         $this->smarty->display('templates/showSerieInfo.tpl');
     }
 
@@ -53,8 +44,6 @@ class SeriesView {
         $this->smarty->assign('id', $id);
         $this->smarty->assign('series', $series);
         $this->smarty->assign('platforms', $platforms);
-
-
        $this->smarty->display('templates/updateSerie.tpl');
     }
 
@@ -62,11 +51,8 @@ class SeriesView {
     function showErrorEmptyForm($logged) {
 
         $this->smarty->assign('logged', $logged);
-
         $this->smarty->assign('error', 'Datos vacios!');
         $this->smarty->display('templates/emptyError.tpl');
-
     }
-
 
 }

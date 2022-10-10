@@ -17,8 +17,6 @@ class PlatformsController {
         $this->authHelper = new AuthHelper();
         $this->model = new PlatformsModel();
         $this->seriesModel = new SeriesModel();
-        
-
         $this->view = new PlatformsView();
     }
 
@@ -52,7 +50,6 @@ class PlatformsController {
 
      //si esta logeado se ve logout, si no lo está se ve login en el header
         $logged = $this->authHelper->isLogged();
-
 
         $this->view->showAllPlatforms($platforms, $logged);
     }
@@ -114,7 +111,6 @@ class PlatformsController {
             $logged = $this->authHelper->isLogged();
             $this->view->showDeleteError($logged);
          }
-        
     }
 
     //ir al formulario para actualizar una  plataforma
@@ -143,7 +139,6 @@ class PlatformsController {
             $this->model->updatePlatform($id, $company, $price);
  
             $this->showPlatformsLocation();
-
         }
         else {
 

@@ -87,23 +87,21 @@ class SeriesController {
 
             $agregar = true;
 
-           if($agregar) {
-                if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png") {
-                    $this->model->addNewSerie($name, $genre, $choice, $_FILES['input_name']);       
-                }
-                else {
-                    $this->model->addNewSerie($name, $genre, $choice);       
-                }
+        if($agregar) {
+            if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png") {
+                $this->model->addNewSerie($name, $genre, $choice, $_FILES['input_name']);       
             }
+            else {
+                $this->model->addNewSerie($name, $genre, $choice);       
+            }
+        }
               
-
            $this->showSeriesLocation();
 
         }   
         else {
             $this->view->showErrorEmptyForm($logged);
         }
-    
     }
 
     //borrar una serie
@@ -111,10 +109,9 @@ class SeriesController {
 
         $this->authHelper->checkLoggedIn();
 
-            $this->model->deleteSerie($id);
-            
-            $this->showSeriesLocation();
-
+        $this->model->deleteSerie($id);
+        
+        $this->showSeriesLocation();
     }
 
     //ir al formulario para actualizar una serie
@@ -141,22 +138,19 @@ class SeriesController {
             $agregar = true;
 
            if($agregar) {
-            if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png") {
-                $this->model->updateSerie($id, $name, $genre, $choice, $_FILES['input_name']);       
-            }
-            else {
-                $this->model->updateSerie($id, $name, $genre, $choice);       
-            }
-        }
-
+                if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png") {
+                    $this->model->updateSerie($id, $name, $genre, $choice, $_FILES['input_name']);       
+                }
+                else {
+                    $this->model->updateSerie($id, $name, $genre, $choice);       
+                }
+           }
             $this->showSeriesLocation();
-
         }
         else {
              $logged = $this->authHelper->isLogged();
             $this->view->showErrorEmptyForm($logged);
         }   
-  
-    }
+      }
 
 }

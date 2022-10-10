@@ -12,14 +12,11 @@ class PlatformsModel {
      //obtener todas las plataformas
      public function getAllPlatforms() {
    
-
         $query = $this->db->prepare("SELECT * FROM platform");
         $query->execute();
 
-        
         $platforms = $query->fetchAll(PDO::FETCH_OBJ); 
         
-
         return $platforms;
     }
 
@@ -30,8 +27,6 @@ class PlatformsModel {
         $query = $this->db->prepare("SELECT serie.*, platform.company as companies FROM serie JOIN platform ON serie.id_platform_fk = platform.id_platform");
         $query->execute();
         $serieandplatform = $query->fetchAll(PDO::FETCH_OBJ); 
-
-    
 
         return $serieandplatform;
     }
@@ -44,16 +39,13 @@ class PlatformsModel {
         $serieandplatform = $query->fetchAll(PDO::FETCH_OBJ); 
 
         return $serieandplatform;
-        
     } 
 
     //añadir nueva plataforma
     public function addNewPlatform($company, $price) {
   
-      
         $query = $this->db->prepare("INSERT INTO platform (company, price) VALUES (?, ?)");
         $query->execute([$company, $price]);
-    
     } 
     
     //borrar una plataforma segun su id
