@@ -18,7 +18,6 @@ class LoginView {
 
         $this->smarty->assign('logged', $logged);
         $this->smarty->assign('error', $error);
-        $this->smarty->assign('titulo', 'Iniciar Sesión');
         $this->smarty->display('templates/loginForm.tpl');
     }
 

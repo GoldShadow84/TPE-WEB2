@@ -22,7 +22,6 @@ class PlatformsView {
     //mostrar lista plataformas
     function showAllPlatforms($platforms, $logged) {
 
-        $this->smarty->assign('titulo', 'Lista de Plataformas - Streaming');
         $this->smarty->assign('platforms', $platforms);
         $this->smarty->assign('logged', $logged);
        $this->smarty->display('templates/showAllPlatforms.tpl');

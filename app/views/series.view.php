@@ -22,7 +22,6 @@ class SeriesView {
     //mostrar lista series con plataformas entre parentesis
     function showAllSeries($series, $platforms, $logged) {
 
-        $this->smarty->assign('titulo', 'Lista de Series');
         $this->smarty->assign('series', $series);
         $this->smarty->assign('platforms', $platforms);
         $this->smarty->assign('logged', $logged);

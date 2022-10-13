@@ -4,7 +4,7 @@
 
       <div class="container">
 
-         <h1>{$titulo}</h1>
+         <h1>Series Encontradas: </h1>
 
           <ul class="list-group">
           

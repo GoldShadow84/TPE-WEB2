@@ -49,15 +49,15 @@ class PlatformsModel {
     } 
     
     //borrar una plataforma segun su id
-    public function deletePlatform($id) {
+    public function deletePlatform($id) {   
 
         $confirm = true;
-        
+
         $query = $this->db->prepare("DELETE FROM platform WHERE id_platform = ?");
         try {
             $query->execute([$id]);
         }
-        catch(PDOException $e){
+        catch(PDOException $e) {
             $confirm = false;
         }
         

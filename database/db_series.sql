@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-10-2022 a las 14:58:05
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Tiempo de generación: 13-10-2022 a las 22:33:44
+-- Versión del servidor: 10.1.38-MariaDB
+-- Versión de PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -40,8 +41,7 @@ CREATE TABLE `platform` (
 INSERT INTO `platform` (`id_platform`, `company`, `price`) VALUES
 (1, 'netflix', 800),
 (2, 'hbo', 500),
-(3, 'Prime', 400),
-(7, 'Disney Plus', 1210);
+(3, 'Prime', 400);
 
 -- --------------------------------------------------------
 
@@ -63,7 +63,8 @@ CREATE TABLE `serie` (
 
 INSERT INTO `serie` (`id_serie`, `name`, `genre`, `image`, `id_platform_fk`) VALUES
 (11, 'Better Call Saul', 'drama', 'img/task633f2029073d1.jpg', 1),
-(14, 'Breaking Bad', 'drama', 'img/series633f20fbc2679.jpg', 1);
+(14, 'Breaking Bad', 'drama', 'img/series633f20fbc2679.jpg', 1),
+(16, 'House of Dragon', 'accion-drama', 'img/series63486a463e3a2.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -116,13 +117,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `platform`
 --
 ALTER TABLE `platform`
-  MODIFY `id_platform` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_platform` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `serie`
 --
 ALTER TABLE `serie`
-  MODIFY `id_serie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_serie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `users`

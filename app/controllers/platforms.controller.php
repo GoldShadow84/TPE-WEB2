@@ -100,17 +100,19 @@ class PlatformsController {
     //borrar una plataforma (no debe estar vinculada con ninguna serie)
     public function deletePlatform($id) {
 
-        $this->authHelper->checkLoggedIn();
+        $logged = $this->authHelper->checkLoggedIn();
 
         $confirm = $this->model->deletePlatform($id);
 
-        if($confirm == true) {
-            $this->showPlatformsLocation(); 
+         if($confirm == true) {
+          $this->showPlatformsLocation(); 
          }
-         else if($confirm == false) {
-            $logged = $this->authHelper->isLogged();
+         else {
             $this->view->showDeleteError($logged);
          }
+        
+         
+         
     }
 
     //ir al formulario para actualizar una  plataforma
